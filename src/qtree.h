@@ -36,7 +36,7 @@ namespace AdamLib {
         // not a leaf.
         int8_t count;
         int32_t values;
-        AABBRect aabb{};
+        AABBRect aabb;
 
         explicit QuadNode(AABBRect aabb, int32_t child_nw = 0, int8_t count = -1, int32_t values = -1);
         inline bool is_leaf() const;
@@ -62,7 +62,7 @@ namespace AdamLib {
 
     private:
         const int NODE_CAPACITY = 8;
-        AABBRect bbox{};
+        AABBRect bbox;
         std::vector<QuadNode*> * nodes = new std::vector<QuadNode*>();
         std::vector<XY>* points = new std::vector<XY>();
 
