@@ -79,3 +79,5 @@ TEST(contains, ContainsTrivial){
     EXPECT_FALSE(tree.contains({-1,-1}));
     EXPECT_FALSE(tree.contains({1.001,1.}));
 }
+
+

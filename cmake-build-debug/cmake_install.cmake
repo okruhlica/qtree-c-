@@ -40,6 +40,7 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/_deps/googletest-build/cmake_install.cmake")
+  include("/Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/benchmark/cmake_install.cmake")
 
 endif()
 

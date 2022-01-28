@@ -42,18 +42,6 @@ include CMakeFiles/rules.ninja
 cmake_ninja_workdir = /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/
 
 #############################################
-# Utility command for install/local
-
-build CMakeFiles/install/local.util: CUSTOM_COMMAND all
-  COMMAND = cd /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug && "/Users/adamokruhlica/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/bin/cmake" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-  DESC = Installing only the local directory...
-  pool = console
-  restat = 1
-
-build install/local: phony CMakeFiles/install/local.util
-
-
-#############################################
 # Utility command for install/strip
 
 build CMakeFiles/install/strip.util: CUSTOM_COMMAND all
@@ -76,50 +64,6 @@ build CMakeFiles/install.util: CUSTOM_COMMAND all
 
 build install: phony CMakeFiles/install.util
 
-# =============================================================================
-# Object build statements for STATIC_LIBRARY target QTreeLib
-
-
-#############################################
-# Order-only phony target for QTreeLib
-
-build cmake_object_order_depends_target_QTreeLib: phony || CMakeFiles/QTreeLib.dir
-
-build CMakeFiles/QTreeLib.dir/src/qtree.cpp.o: CXX_COMPILER__QTreeLib_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/src/qtree.cpp || cmake_object_order_depends_target_QTreeLib
-  DEP_FILE = CMakeFiles/QTreeLib.dir/src/qtree.cpp.o.d
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
-  OBJECT_DIR = CMakeFiles/QTreeLib.dir
-  OBJECT_FILE_DIR = CMakeFiles/QTreeLib.dir/src
-
-
-# =============================================================================
-# Link build statements for STATIC_LIBRARY target QTreeLib
-
-
-#############################################
-# Link the static library libQTreeLib.a
-
-build libQTreeLib.a: CXX_STATIC_LIBRARY_LINKER__QTreeLib_Debug CMakeFiles/QTreeLib.dir/src/qtree.cpp.o
-  ARCH_FLAGS = -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
-  LANGUAGE_COMPILE_FLAGS = -g
-  OBJECT_DIR = CMakeFiles/QTreeLib.dir
-  POST_BUILD = :
-  PRE_LINK = :
-  TARGET_FILE = libQTreeLib.a
-  TARGET_PDB = QTreeLib.a.dbg
-
-
-#############################################
-# Utility command for rebuild_cache
-
-build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug && "/Users/adamokruhlica/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/bin/cmake" --regenerate-during-build -S/Users/adamokruhlica/Documents/Code/C++/QuadTree -B/Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug
-  DESC = Running CMake to regenerate build system...
-  pool = console
-  restat = 1
-
-build rebuild_cache: phony CMakeFiles/rebuild_cache.util
-
 
 #############################################
 # Utility command for edit_cache
@@ -130,6 +74,51 @@ build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
   restat = 1
 
 build edit_cache: phony CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for install/local
+
+build CMakeFiles/install/local.util: CUSTOM_COMMAND all
+  COMMAND = cd /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug && "/Users/adamokruhlica/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/bin/cmake" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build install/local: phony CMakeFiles/install/local.util
+
+# =============================================================================
+# Object build statements for EXECUTABLE target QuadBenchmark
+
+
+#############################################
+# Order-only phony target for QuadBenchmark
+
+build cmake_object_order_depends_target_QuadBenchmark: phony || cmake_object_order_depends_target_QTreeLib cmake_object_order_depends_target_benchmark
+
+build CMakeFiles/QuadBenchmark.dir/test/benchmark.cc.o: CXX_COMPILER__QuadBenchmark_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/test/benchmark.cc || cmake_object_order_depends_target_QuadBenchmark
+  DEP_FILE = CMakeFiles/QuadBenchmark.dir/test/benchmark.cc.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include
+  OBJECT_DIR = CMakeFiles/QuadBenchmark.dir
+  OBJECT_FILE_DIR = CMakeFiles/QuadBenchmark.dir/test
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target QuadBenchmark
+
+
+#############################################
+# Link the executable QuadBenchmark
+
+build QuadBenchmark: CXX_EXECUTABLE_LINKER__QuadBenchmark_Debug CMakeFiles/QuadBenchmark.dir/test/benchmark.cc.o | libQTreeLib.a benchmark/src/libbenchmark.a || benchmark/src/libbenchmark.a libQTreeLib.a
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LINK_LIBRARIES = libQTreeLib.a  benchmark/src/libbenchmark.a
+  OBJECT_DIR = CMakeFiles/QuadBenchmark.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = QuadBenchmark
+  TARGET_PDB = QuadBenchmark.dbg
 
 # =============================================================================
 # Object build statements for EXECUTABLE target QuadTest
@@ -201,6 +190,50 @@ build QuadDemo: CXX_EXECUTABLE_LINKER__QuadDemo_Debug CMakeFiles/QuadDemo.dir/sr
   PRE_LINK = :
   TARGET_FILE = QuadDemo
   TARGET_PDB = QuadDemo.dbg
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug && "/Users/adamokruhlica/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/bin/cmake" --regenerate-during-build -S/Users/adamokruhlica/Documents/Code/C++/QuadTree -B/Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build rebuild_cache: phony CMakeFiles/rebuild_cache.util
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target QTreeLib
+
+
+#############################################
+# Order-only phony target for QTreeLib
+
+build cmake_object_order_depends_target_QTreeLib: phony || CMakeFiles/QTreeLib.dir
+
+build CMakeFiles/QTreeLib.dir/src/qtree.cpp.o: CXX_COMPILER__QTreeLib_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/src/qtree.cpp || cmake_object_order_depends_target_QTreeLib
+  DEP_FILE = CMakeFiles/QTreeLib.dir/src/qtree.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  OBJECT_DIR = CMakeFiles/QTreeLib.dir
+  OBJECT_FILE_DIR = CMakeFiles/QTreeLib.dir/src
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target QTreeLib
+
+
+#############################################
+# Link the static library libQTreeLib.a
+
+build libQTreeLib.a: CXX_STATIC_LIBRARY_LINKER__QTreeLib_Debug CMakeFiles/QTreeLib.dir/src/qtree.cpp.o
+  ARCH_FLAGS = -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = CMakeFiles/QTreeLib.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = libQTreeLib.a
+  TARGET_PDB = QTreeLib.a.dbg
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
@@ -545,9 +578,1689 @@ build lib/libgtestd.a: CXX_STATIC_LIBRARY_LINKER__gtest_Debug _deps/googletest-b
   TARGET_PDB = gtestd.a.dbg
 
 # =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /Users/adamokruhlica/Documents/Code/C++/QuadTree/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for install/local
+
+build benchmark/CMakeFiles/install/local.util: CUSTOM_COMMAND benchmark/all
+  COMMAND = cd /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/benchmark && "/Users/adamokruhlica/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/bin/cmake" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build benchmark/install/local: phony benchmark/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build benchmark/CMakeFiles/install/strip.util: CUSTOM_COMMAND benchmark/all
+  COMMAND = cd /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/benchmark && "/Users/adamokruhlica/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/bin/cmake" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build benchmark/install/strip: phony benchmark/CMakeFiles/install/strip.util
+
+
+#############################################
+# Utility command for install
+
+build benchmark/CMakeFiles/install.util: CUSTOM_COMMAND benchmark/all
+  COMMAND = cd /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/benchmark && "/Users/adamokruhlica/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/bin/cmake" -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build benchmark/install: phony benchmark/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build benchmark/list_install_components: phony
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build benchmark/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/benchmark && "/Users/adamokruhlica/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/bin/cmake" --regenerate-during-build -S/Users/adamokruhlica/Documents/Code/C++/QuadTree -B/Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build benchmark/rebuild_cache: phony benchmark/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for edit_cache
+
+build benchmark/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/benchmark && "/Users/adamokruhlica/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/bin/cmake" -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build benchmark/edit_cache: phony benchmark/CMakeFiles/edit_cache.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for install/local
+
+build benchmark/src/CMakeFiles/install/local.util: CUSTOM_COMMAND benchmark/src/all
+  COMMAND = cd /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/benchmark/src && "/Users/adamokruhlica/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/bin/cmake" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build benchmark/src/install/local: phony benchmark/src/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build benchmark/src/CMakeFiles/install/strip.util: CUSTOM_COMMAND benchmark/src/all
+  COMMAND = cd /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/benchmark/src && "/Users/adamokruhlica/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/bin/cmake" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build benchmark/src/install/strip: phony benchmark/src/CMakeFiles/install/strip.util
+
+
+#############################################
+# Utility command for install
+
+build benchmark/src/CMakeFiles/install.util: CUSTOM_COMMAND benchmark/src/all
+  COMMAND = cd /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/benchmark/src && "/Users/adamokruhlica/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/bin/cmake" -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build benchmark/src/install: phony benchmark/src/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build benchmark/src/list_install_components: phony
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build benchmark/src/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/benchmark/src && "/Users/adamokruhlica/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/bin/cmake" --regenerate-during-build -S/Users/adamokruhlica/Documents/Code/C++/QuadTree -B/Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build benchmark/src/rebuild_cache: phony benchmark/src/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for edit_cache
+
+build benchmark/src/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/benchmark/src && "/Users/adamokruhlica/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/bin/cmake" -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build benchmark/src/edit_cache: phony benchmark/src/CMakeFiles/edit_cache.util
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target benchmark_main
+
+
+#############################################
+# Order-only phony target for benchmark_main
+
+build cmake_object_order_depends_target_benchmark_main: phony || cmake_object_order_depends_target_benchmark
+
+build benchmark/src/CMakeFiles/benchmark_main.dir/benchmark_main.cc.o: CXX_COMPILER__benchmark_main_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src/benchmark_main.cc || cmake_object_order_depends_target_benchmark_main
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/src/CMakeFiles/benchmark_main.dir/benchmark_main.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src
+  OBJECT_DIR = benchmark/src/CMakeFiles/benchmark_main.dir
+  OBJECT_FILE_DIR = benchmark/src/CMakeFiles/benchmark_main.dir
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target benchmark_main
+
+
+#############################################
+# Link the static library benchmark/src/libbenchmark_main.a
+
+build benchmark/src/libbenchmark_main.a: CXX_STATIC_LIBRARY_LINKER__benchmark_main_Debug benchmark/src/CMakeFiles/benchmark_main.dir/benchmark_main.cc.o || benchmark/src/libbenchmark.a
+  ARCH_FLAGS = -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LANGUAGE_COMPILE_FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g
+  OBJECT_DIR = benchmark/src/CMakeFiles/benchmark_main.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = benchmark/src/libbenchmark_main.a
+  TARGET_PDB = benchmark_main.a.dbg
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target benchmark
+
+
+#############################################
+# Order-only phony target for benchmark
+
+build cmake_object_order_depends_target_benchmark: phony || benchmark/src/CMakeFiles/benchmark.dir
+
+build benchmark/src/CMakeFiles/benchmark.dir/benchmark.cc.o: CXX_COMPILER__benchmark_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src/benchmark.cc || cmake_object_order_depends_target_benchmark
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/src/CMakeFiles/benchmark.dir/benchmark.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src
+  OBJECT_DIR = benchmark/src/CMakeFiles/benchmark.dir
+  OBJECT_FILE_DIR = benchmark/src/CMakeFiles/benchmark.dir
+
+build benchmark/src/CMakeFiles/benchmark.dir/benchmark_api_internal.cc.o: CXX_COMPILER__benchmark_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src/benchmark_api_internal.cc || cmake_object_order_depends_target_benchmark
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/src/CMakeFiles/benchmark.dir/benchmark_api_internal.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src
+  OBJECT_DIR = benchmark/src/CMakeFiles/benchmark.dir
+  OBJECT_FILE_DIR = benchmark/src/CMakeFiles/benchmark.dir
+
+build benchmark/src/CMakeFiles/benchmark.dir/benchmark_name.cc.o: CXX_COMPILER__benchmark_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src/benchmark_name.cc || cmake_object_order_depends_target_benchmark
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/src/CMakeFiles/benchmark.dir/benchmark_name.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src
+  OBJECT_DIR = benchmark/src/CMakeFiles/benchmark.dir
+  OBJECT_FILE_DIR = benchmark/src/CMakeFiles/benchmark.dir
+
+build benchmark/src/CMakeFiles/benchmark.dir/benchmark_register.cc.o: CXX_COMPILER__benchmark_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src/benchmark_register.cc || cmake_object_order_depends_target_benchmark
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/src/CMakeFiles/benchmark.dir/benchmark_register.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src
+  OBJECT_DIR = benchmark/src/CMakeFiles/benchmark.dir
+  OBJECT_FILE_DIR = benchmark/src/CMakeFiles/benchmark.dir
+
+build benchmark/src/CMakeFiles/benchmark.dir/benchmark_runner.cc.o: CXX_COMPILER__benchmark_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src/benchmark_runner.cc || cmake_object_order_depends_target_benchmark
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/src/CMakeFiles/benchmark.dir/benchmark_runner.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src
+  OBJECT_DIR = benchmark/src/CMakeFiles/benchmark.dir
+  OBJECT_FILE_DIR = benchmark/src/CMakeFiles/benchmark.dir
+
+build benchmark/src/CMakeFiles/benchmark.dir/colorprint.cc.o: CXX_COMPILER__benchmark_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src/colorprint.cc || cmake_object_order_depends_target_benchmark
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/src/CMakeFiles/benchmark.dir/colorprint.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src
+  OBJECT_DIR = benchmark/src/CMakeFiles/benchmark.dir
+  OBJECT_FILE_DIR = benchmark/src/CMakeFiles/benchmark.dir
+
+build benchmark/src/CMakeFiles/benchmark.dir/commandlineflags.cc.o: CXX_COMPILER__benchmark_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src/commandlineflags.cc || cmake_object_order_depends_target_benchmark
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/src/CMakeFiles/benchmark.dir/commandlineflags.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src
+  OBJECT_DIR = benchmark/src/CMakeFiles/benchmark.dir
+  OBJECT_FILE_DIR = benchmark/src/CMakeFiles/benchmark.dir
+
+build benchmark/src/CMakeFiles/benchmark.dir/complexity.cc.o: CXX_COMPILER__benchmark_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src/complexity.cc || cmake_object_order_depends_target_benchmark
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/src/CMakeFiles/benchmark.dir/complexity.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src
+  OBJECT_DIR = benchmark/src/CMakeFiles/benchmark.dir
+  OBJECT_FILE_DIR = benchmark/src/CMakeFiles/benchmark.dir
+
+build benchmark/src/CMakeFiles/benchmark.dir/console_reporter.cc.o: CXX_COMPILER__benchmark_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src/console_reporter.cc || cmake_object_order_depends_target_benchmark
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/src/CMakeFiles/benchmark.dir/console_reporter.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src
+  OBJECT_DIR = benchmark/src/CMakeFiles/benchmark.dir
+  OBJECT_FILE_DIR = benchmark/src/CMakeFiles/benchmark.dir
+
+build benchmark/src/CMakeFiles/benchmark.dir/counter.cc.o: CXX_COMPILER__benchmark_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src/counter.cc || cmake_object_order_depends_target_benchmark
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/src/CMakeFiles/benchmark.dir/counter.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src
+  OBJECT_DIR = benchmark/src/CMakeFiles/benchmark.dir
+  OBJECT_FILE_DIR = benchmark/src/CMakeFiles/benchmark.dir
+
+build benchmark/src/CMakeFiles/benchmark.dir/csv_reporter.cc.o: CXX_COMPILER__benchmark_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src/csv_reporter.cc || cmake_object_order_depends_target_benchmark
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/src/CMakeFiles/benchmark.dir/csv_reporter.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src
+  OBJECT_DIR = benchmark/src/CMakeFiles/benchmark.dir
+  OBJECT_FILE_DIR = benchmark/src/CMakeFiles/benchmark.dir
+
+build benchmark/src/CMakeFiles/benchmark.dir/json_reporter.cc.o: CXX_COMPILER__benchmark_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src/json_reporter.cc || cmake_object_order_depends_target_benchmark
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/src/CMakeFiles/benchmark.dir/json_reporter.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src
+  OBJECT_DIR = benchmark/src/CMakeFiles/benchmark.dir
+  OBJECT_FILE_DIR = benchmark/src/CMakeFiles/benchmark.dir
+
+build benchmark/src/CMakeFiles/benchmark.dir/perf_counters.cc.o: CXX_COMPILER__benchmark_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src/perf_counters.cc || cmake_object_order_depends_target_benchmark
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/src/CMakeFiles/benchmark.dir/perf_counters.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src
+  OBJECT_DIR = benchmark/src/CMakeFiles/benchmark.dir
+  OBJECT_FILE_DIR = benchmark/src/CMakeFiles/benchmark.dir
+
+build benchmark/src/CMakeFiles/benchmark.dir/reporter.cc.o: CXX_COMPILER__benchmark_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src/reporter.cc || cmake_object_order_depends_target_benchmark
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/src/CMakeFiles/benchmark.dir/reporter.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src
+  OBJECT_DIR = benchmark/src/CMakeFiles/benchmark.dir
+  OBJECT_FILE_DIR = benchmark/src/CMakeFiles/benchmark.dir
+
+build benchmark/src/CMakeFiles/benchmark.dir/sleep.cc.o: CXX_COMPILER__benchmark_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src/sleep.cc || cmake_object_order_depends_target_benchmark
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/src/CMakeFiles/benchmark.dir/sleep.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src
+  OBJECT_DIR = benchmark/src/CMakeFiles/benchmark.dir
+  OBJECT_FILE_DIR = benchmark/src/CMakeFiles/benchmark.dir
+
+build benchmark/src/CMakeFiles/benchmark.dir/statistics.cc.o: CXX_COMPILER__benchmark_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src/statistics.cc || cmake_object_order_depends_target_benchmark
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/src/CMakeFiles/benchmark.dir/statistics.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src
+  OBJECT_DIR = benchmark/src/CMakeFiles/benchmark.dir
+  OBJECT_FILE_DIR = benchmark/src/CMakeFiles/benchmark.dir
+
+build benchmark/src/CMakeFiles/benchmark.dir/string_util.cc.o: CXX_COMPILER__benchmark_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src/string_util.cc || cmake_object_order_depends_target_benchmark
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/src/CMakeFiles/benchmark.dir/string_util.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src
+  OBJECT_DIR = benchmark/src/CMakeFiles/benchmark.dir
+  OBJECT_FILE_DIR = benchmark/src/CMakeFiles/benchmark.dir
+
+build benchmark/src/CMakeFiles/benchmark.dir/sysinfo.cc.o: CXX_COMPILER__benchmark_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src/sysinfo.cc || cmake_object_order_depends_target_benchmark
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/src/CMakeFiles/benchmark.dir/sysinfo.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src
+  OBJECT_DIR = benchmark/src/CMakeFiles/benchmark.dir
+  OBJECT_FILE_DIR = benchmark/src/CMakeFiles/benchmark.dir
+
+build benchmark/src/CMakeFiles/benchmark.dir/timers.cc.o: CXX_COMPILER__benchmark_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src/timers.cc || cmake_object_order_depends_target_benchmark
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/src/CMakeFiles/benchmark.dir/timers.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/src
+  OBJECT_DIR = benchmark/src/CMakeFiles/benchmark.dir
+  OBJECT_FILE_DIR = benchmark/src/CMakeFiles/benchmark.dir
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target benchmark
+
+
+#############################################
+# Link the static library benchmark/src/libbenchmark.a
+
+build benchmark/src/libbenchmark.a: CXX_STATIC_LIBRARY_LINKER__benchmark_Debug benchmark/src/CMakeFiles/benchmark.dir/benchmark.cc.o benchmark/src/CMakeFiles/benchmark.dir/benchmark_api_internal.cc.o benchmark/src/CMakeFiles/benchmark.dir/benchmark_name.cc.o benchmark/src/CMakeFiles/benchmark.dir/benchmark_register.cc.o benchmark/src/CMakeFiles/benchmark.dir/benchmark_runner.cc.o benchmark/src/CMakeFiles/benchmark.dir/colorprint.cc.o benchmark/src/CMakeFiles/benchmark.dir/commandlineflags.cc.o benchmark/src/CMakeFiles/benchmark.dir/complexity.cc.o benchmark/src/CMakeFiles/benchmark.dir/console_reporter.cc.o benchmark/src/CMakeFiles/benchmark.dir/counter.cc.o benchmark/src/CMakeFiles/benchmark.dir/csv_reporter.cc.o benchmark/src/CMakeFiles/benchmark.dir/json_reporter.cc.o benchmark/src/CMakeFiles/benchmark.dir/perf_counters.cc.o benchmark/src/CMakeFiles/benchmark.dir/reporter.cc.o benchmark/src/CMakeFiles/benchmark.dir/sleep.cc.o benchmark/src/CMakeFiles/benchmark.dir/statistics.cc.o benchmark/src/CMakeFiles/benchmark.dir/string_util.cc.o benchmark/src/CMakeFiles/benchmark.dir/sysinfo.cc.o benchmark/src/CMakeFiles/benchmark.dir/timers.cc.o
+  ARCH_FLAGS = -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LANGUAGE_COMPILE_FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g
+  OBJECT_DIR = benchmark/src/CMakeFiles/benchmark.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = benchmark/src/libbenchmark.a
+  TARGET_PDB = benchmark.a.dbg
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for install/local
+
+build benchmark/test/CMakeFiles/install/local.util: CUSTOM_COMMAND benchmark/test/all
+  COMMAND = cd /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/benchmark/test && "/Users/adamokruhlica/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/bin/cmake" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build benchmark/test/install/local: phony benchmark/test/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build benchmark/test/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/benchmark/test && "/Users/adamokruhlica/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/bin/cmake" --regenerate-during-build -S/Users/adamokruhlica/Documents/Code/C++/QuadTree -B/Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build benchmark/test/rebuild_cache: phony benchmark/test/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for edit_cache
+
+build benchmark/test/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/benchmark/test && "/Users/adamokruhlica/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/bin/cmake" -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build benchmark/test/edit_cache: phony benchmark/test/CMakeFiles/edit_cache.util
+
+# =============================================================================
+# Object build statements for EXECUTABLE target commandlineflags_gtest
+
+
+#############################################
+# Order-only phony target for commandlineflags_gtest
+
+build cmake_object_order_depends_target_commandlineflags_gtest: phony || cmake_object_order_depends_target_benchmark cmake_object_order_depends_target_gmock cmake_object_order_depends_target_gmock_main cmake_object_order_depends_target_gtest
+
+build benchmark/test/CMakeFiles/commandlineflags_gtest.dir/commandlineflags_gtest.cc.o: CXX_COMPILER__commandlineflags_gtest_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/test/commandlineflags_gtest.cc || cmake_object_order_depends_target_commandlineflags_gtest
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/test/CMakeFiles/commandlineflags_gtest.dir/commandlineflags_gtest.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include -isystem /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/_deps/googletest-src/googlemock/include -isystem /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/_deps/googletest-src/googlemock -isystem /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/_deps/googletest-src/googletest/include -isystem /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/_deps/googletest-src/googletest
+  OBJECT_DIR = benchmark/test/CMakeFiles/commandlineflags_gtest.dir
+  OBJECT_FILE_DIR = benchmark/test/CMakeFiles/commandlineflags_gtest.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target commandlineflags_gtest
+
+
+#############################################
+# Link the executable benchmark/test/commandlineflags_gtest
+
+build benchmark/test/commandlineflags_gtest: CXX_EXECUTABLE_LINKER__commandlineflags_gtest_Debug benchmark/test/CMakeFiles/commandlineflags_gtest.dir/commandlineflags_gtest.cc.o | benchmark/src/libbenchmark.a lib/libgmock_maind.a lib/libgmockd.a lib/libgtestd.a || benchmark/src/libbenchmark.a lib/libgmock_maind.a lib/libgmockd.a lib/libgtestd.a
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LINK_LIBRARIES = benchmark/src/libbenchmark.a  lib/libgmock_maind.a  lib/libgmockd.a  lib/libgtestd.a
+  OBJECT_DIR = benchmark/test/CMakeFiles/commandlineflags_gtest.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = benchmark/test/commandlineflags_gtest
+  TARGET_PDB = commandlineflags_gtest.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target benchmark_random_interleaving_gtest
+
+
+#############################################
+# Order-only phony target for benchmark_random_interleaving_gtest
+
+build cmake_object_order_depends_target_benchmark_random_interleaving_gtest: phony || cmake_object_order_depends_target_benchmark cmake_object_order_depends_target_gmock cmake_object_order_depends_target_gmock_main cmake_object_order_depends_target_gtest
+
+build benchmark/test/CMakeFiles/benchmark_random_interleaving_gtest.dir/benchmark_random_interleaving_gtest.cc.o: CXX_COMPILER__benchmark_random_interleaving_gtest_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/test/benchmark_random_interleaving_gtest.cc || cmake_object_order_depends_target_benchmark_random_interleaving_gtest
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/test/CMakeFiles/benchmark_random_interleaving_gtest.dir/benchmark_random_interleaving_gtest.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include -isystem /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/_deps/googletest-src/googlemock/include -isystem /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/_deps/googletest-src/googlemock -isystem /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/_deps/googletest-src/googletest/include -isystem /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/_deps/googletest-src/googletest
+  OBJECT_DIR = benchmark/test/CMakeFiles/benchmark_random_interleaving_gtest.dir
+  OBJECT_FILE_DIR = benchmark/test/CMakeFiles/benchmark_random_interleaving_gtest.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target benchmark_random_interleaving_gtest
+
+
+#############################################
+# Link the executable benchmark/test/benchmark_random_interleaving_gtest
+
+build benchmark/test/benchmark_random_interleaving_gtest: CXX_EXECUTABLE_LINKER__benchmark_random_interleaving_gtest_Debug benchmark/test/CMakeFiles/benchmark_random_interleaving_gtest.dir/benchmark_random_interleaving_gtest.cc.o | benchmark/src/libbenchmark.a lib/libgmock_maind.a lib/libgmockd.a lib/libgtestd.a || benchmark/src/libbenchmark.a lib/libgmock_maind.a lib/libgmockd.a lib/libgtestd.a
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LINK_LIBRARIES = benchmark/src/libbenchmark.a  lib/libgmock_maind.a  lib/libgmockd.a  lib/libgtestd.a
+  OBJECT_DIR = benchmark/test/CMakeFiles/benchmark_random_interleaving_gtest.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = benchmark/test/benchmark_random_interleaving_gtest
+  TARGET_PDB = benchmark_random_interleaving_gtest.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target benchmark_gtest
+
+
+#############################################
+# Order-only phony target for benchmark_gtest
+
+build cmake_object_order_depends_target_benchmark_gtest: phony || cmake_object_order_depends_target_benchmark cmake_object_order_depends_target_gmock cmake_object_order_depends_target_gmock_main cmake_object_order_depends_target_gtest
+
+build benchmark/test/CMakeFiles/benchmark_gtest.dir/benchmark_gtest.cc.o: CXX_COMPILER__benchmark_gtest_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/test/benchmark_gtest.cc || cmake_object_order_depends_target_benchmark_gtest
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/test/CMakeFiles/benchmark_gtest.dir/benchmark_gtest.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include -isystem /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/_deps/googletest-src/googlemock/include -isystem /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/_deps/googletest-src/googlemock -isystem /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/_deps/googletest-src/googletest/include -isystem /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/_deps/googletest-src/googletest
+  OBJECT_DIR = benchmark/test/CMakeFiles/benchmark_gtest.dir
+  OBJECT_FILE_DIR = benchmark/test/CMakeFiles/benchmark_gtest.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target benchmark_gtest
+
+
+#############################################
+# Link the executable benchmark/test/benchmark_gtest
+
+build benchmark/test/benchmark_gtest: CXX_EXECUTABLE_LINKER__benchmark_gtest_Debug benchmark/test/CMakeFiles/benchmark_gtest.dir/benchmark_gtest.cc.o | benchmark/src/libbenchmark.a lib/libgmock_maind.a lib/libgmockd.a lib/libgtestd.a || benchmark/src/libbenchmark.a lib/libgmock_maind.a lib/libgmockd.a lib/libgtestd.a
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LINK_LIBRARIES = benchmark/src/libbenchmark.a  lib/libgmock_maind.a  lib/libgmockd.a  lib/libgtestd.a
+  OBJECT_DIR = benchmark/test/CMakeFiles/benchmark_gtest.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = benchmark/test/benchmark_gtest
+  TARGET_PDB = benchmark_gtest.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target complexity_test
+
+
+#############################################
+# Order-only phony target for complexity_test
+
+build cmake_object_order_depends_target_complexity_test: phony || cmake_object_order_depends_target_benchmark cmake_object_order_depends_target_output_test_helper
+
+build benchmark/test/CMakeFiles/complexity_test.dir/complexity_test.cc.o: CXX_COMPILER__complexity_test_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/test/complexity_test.cc || cmake_object_order_depends_target_complexity_test
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/test/CMakeFiles/complexity_test.dir/complexity_test.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include
+  OBJECT_DIR = benchmark/test/CMakeFiles/complexity_test.dir
+  OBJECT_FILE_DIR = benchmark/test/CMakeFiles/complexity_test.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target complexity_test
+
+
+#############################################
+# Link the executable benchmark/test/complexity_test
+
+build benchmark/test/complexity_test: CXX_EXECUTABLE_LINKER__complexity_test_Debug benchmark/test/CMakeFiles/complexity_test.dir/complexity_test.cc.o | benchmark/test/liboutput_test_helper.a benchmark/src/libbenchmark.a || benchmark/src/libbenchmark.a benchmark/test/liboutput_test_helper.a
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LINK_LIBRARIES = benchmark/test/liboutput_test_helper.a  benchmark/src/libbenchmark.a
+  OBJECT_DIR = benchmark/test/CMakeFiles/complexity_test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = benchmark/test/complexity_test
+  TARGET_PDB = complexity_test.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target cxx03_test
+
+
+#############################################
+# Order-only phony target for cxx03_test
+
+build cmake_object_order_depends_target_cxx03_test: phony || cmake_object_order_depends_target_benchmark
+
+build benchmark/test/CMakeFiles/cxx03_test.dir/cxx03_test.cc.o: CXX_COMPILER__cxx03_test_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/test/cxx03_test.cc || cmake_object_order_depends_target_cxx03_test
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/test/CMakeFiles/cxx03_test.dir/cxx03_test.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++98
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include
+  OBJECT_DIR = benchmark/test/CMakeFiles/cxx03_test.dir
+  OBJECT_FILE_DIR = benchmark/test/CMakeFiles/cxx03_test.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target cxx03_test
+
+
+#############################################
+# Link the executable benchmark/test/cxx03_test
+
+build benchmark/test/cxx03_test: CXX_EXECUTABLE_LINKER__cxx03_test_Debug benchmark/test/CMakeFiles/cxx03_test.dir/cxx03_test.cc.o | benchmark/src/libbenchmark.a || benchmark/src/libbenchmark.a
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LINK_LIBRARIES = benchmark/src/libbenchmark.a
+  OBJECT_DIR = benchmark/test/CMakeFiles/cxx03_test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = benchmark/test/cxx03_test
+  TARGET_PDB = cxx03_test.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target user_counters_thousands_test
+
+
+#############################################
+# Order-only phony target for user_counters_thousands_test
+
+build cmake_object_order_depends_target_user_counters_thousands_test: phony || cmake_object_order_depends_target_benchmark cmake_object_order_depends_target_output_test_helper
+
+build benchmark/test/CMakeFiles/user_counters_thousands_test.dir/user_counters_thousands_test.cc.o: CXX_COMPILER__user_counters_thousands_test_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/test/user_counters_thousands_test.cc || cmake_object_order_depends_target_user_counters_thousands_test
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/test/CMakeFiles/user_counters_thousands_test.dir/user_counters_thousands_test.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include
+  OBJECT_DIR = benchmark/test/CMakeFiles/user_counters_thousands_test.dir
+  OBJECT_FILE_DIR = benchmark/test/CMakeFiles/user_counters_thousands_test.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target user_counters_thousands_test
+
+
+#############################################
+# Link the executable benchmark/test/user_counters_thousands_test
+
+build benchmark/test/user_counters_thousands_test: CXX_EXECUTABLE_LINKER__user_counters_thousands_test_Debug benchmark/test/CMakeFiles/user_counters_thousands_test.dir/user_counters_thousands_test.cc.o | benchmark/test/liboutput_test_helper.a benchmark/src/libbenchmark.a || benchmark/src/libbenchmark.a benchmark/test/liboutput_test_helper.a
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LINK_LIBRARIES = benchmark/test/liboutput_test_helper.a  benchmark/src/libbenchmark.a
+  OBJECT_DIR = benchmark/test/CMakeFiles/user_counters_thousands_test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = benchmark/test/user_counters_thousands_test
+  TARGET_PDB = user_counters_thousands_test.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target user_counters_tabular_test
+
+
+#############################################
+# Order-only phony target for user_counters_tabular_test
+
+build cmake_object_order_depends_target_user_counters_tabular_test: phony || cmake_object_order_depends_target_benchmark cmake_object_order_depends_target_output_test_helper
+
+build benchmark/test/CMakeFiles/user_counters_tabular_test.dir/user_counters_tabular_test.cc.o: CXX_COMPILER__user_counters_tabular_test_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/test/user_counters_tabular_test.cc || cmake_object_order_depends_target_user_counters_tabular_test
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/test/CMakeFiles/user_counters_tabular_test.dir/user_counters_tabular_test.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include
+  OBJECT_DIR = benchmark/test/CMakeFiles/user_counters_tabular_test.dir
+  OBJECT_FILE_DIR = benchmark/test/CMakeFiles/user_counters_tabular_test.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target user_counters_tabular_test
+
+
+#############################################
+# Link the executable benchmark/test/user_counters_tabular_test
+
+build benchmark/test/user_counters_tabular_test: CXX_EXECUTABLE_LINKER__user_counters_tabular_test_Debug benchmark/test/CMakeFiles/user_counters_tabular_test.dir/user_counters_tabular_test.cc.o | benchmark/test/liboutput_test_helper.a benchmark/src/libbenchmark.a || benchmark/src/libbenchmark.a benchmark/test/liboutput_test_helper.a
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LINK_LIBRARIES = benchmark/test/liboutput_test_helper.a  benchmark/src/libbenchmark.a
+  OBJECT_DIR = benchmark/test/CMakeFiles/user_counters_tabular_test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = benchmark/test/user_counters_tabular_test
+  TARGET_PDB = user_counters_tabular_test.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target internal_threading_test
+
+
+#############################################
+# Order-only phony target for internal_threading_test
+
+build cmake_object_order_depends_target_internal_threading_test: phony || cmake_object_order_depends_target_benchmark cmake_object_order_depends_target_output_test_helper
+
+build benchmark/test/CMakeFiles/internal_threading_test.dir/internal_threading_test.cc.o: CXX_COMPILER__internal_threading_test_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/test/internal_threading_test.cc || cmake_object_order_depends_target_internal_threading_test
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/test/CMakeFiles/internal_threading_test.dir/internal_threading_test.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include
+  OBJECT_DIR = benchmark/test/CMakeFiles/internal_threading_test.dir
+  OBJECT_FILE_DIR = benchmark/test/CMakeFiles/internal_threading_test.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target internal_threading_test
+
+
+#############################################
+# Link the executable benchmark/test/internal_threading_test
+
+build benchmark/test/internal_threading_test: CXX_EXECUTABLE_LINKER__internal_threading_test_Debug benchmark/test/CMakeFiles/internal_threading_test.dir/internal_threading_test.cc.o | benchmark/test/liboutput_test_helper.a benchmark/src/libbenchmark.a || benchmark/src/libbenchmark.a benchmark/test/liboutput_test_helper.a
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LINK_LIBRARIES = benchmark/test/liboutput_test_helper.a  benchmark/src/libbenchmark.a
+  OBJECT_DIR = benchmark/test/CMakeFiles/internal_threading_test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = benchmark/test/internal_threading_test
+  TARGET_PDB = internal_threading_test.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target perf_counters_gtest
+
+
+#############################################
+# Order-only phony target for perf_counters_gtest
+
+build cmake_object_order_depends_target_perf_counters_gtest: phony || cmake_object_order_depends_target_benchmark cmake_object_order_depends_target_gmock cmake_object_order_depends_target_gmock_main cmake_object_order_depends_target_gtest
+
+build benchmark/test/CMakeFiles/perf_counters_gtest.dir/perf_counters_gtest.cc.o: CXX_COMPILER__perf_counters_gtest_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/test/perf_counters_gtest.cc || cmake_object_order_depends_target_perf_counters_gtest
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/test/CMakeFiles/perf_counters_gtest.dir/perf_counters_gtest.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include -isystem /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/_deps/googletest-src/googlemock/include -isystem /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/_deps/googletest-src/googlemock -isystem /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/_deps/googletest-src/googletest/include -isystem /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/_deps/googletest-src/googletest
+  OBJECT_DIR = benchmark/test/CMakeFiles/perf_counters_gtest.dir
+  OBJECT_FILE_DIR = benchmark/test/CMakeFiles/perf_counters_gtest.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target perf_counters_gtest
+
+
+#############################################
+# Link the executable benchmark/test/perf_counters_gtest
+
+build benchmark/test/perf_counters_gtest: CXX_EXECUTABLE_LINKER__perf_counters_gtest_Debug benchmark/test/CMakeFiles/perf_counters_gtest.dir/perf_counters_gtest.cc.o | benchmark/src/libbenchmark.a lib/libgmock_maind.a lib/libgmockd.a lib/libgtestd.a || benchmark/src/libbenchmark.a lib/libgmock_maind.a lib/libgmockd.a lib/libgtestd.a
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LINK_LIBRARIES = benchmark/src/libbenchmark.a  lib/libgmock_maind.a  lib/libgmockd.a  lib/libgtestd.a
+  OBJECT_DIR = benchmark/test/CMakeFiles/perf_counters_gtest.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = benchmark/test/perf_counters_gtest
+  TARGET_PDB = perf_counters_gtest.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target perf_counters_test
+
+
+#############################################
+# Order-only phony target for perf_counters_test
+
+build cmake_object_order_depends_target_perf_counters_test: phony || cmake_object_order_depends_target_benchmark cmake_object_order_depends_target_output_test_helper
+
+build benchmark/test/CMakeFiles/perf_counters_test.dir/perf_counters_test.cc.o: CXX_COMPILER__perf_counters_test_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/test/perf_counters_test.cc || cmake_object_order_depends_target_perf_counters_test
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/test/CMakeFiles/perf_counters_test.dir/perf_counters_test.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include
+  OBJECT_DIR = benchmark/test/CMakeFiles/perf_counters_test.dir
+  OBJECT_FILE_DIR = benchmark/test/CMakeFiles/perf_counters_test.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target perf_counters_test
+
+
+#############################################
+# Link the executable benchmark/test/perf_counters_test
+
+build benchmark/test/perf_counters_test: CXX_EXECUTABLE_LINKER__perf_counters_test_Debug benchmark/test/CMakeFiles/perf_counters_test.dir/perf_counters_test.cc.o | benchmark/test/liboutput_test_helper.a benchmark/src/libbenchmark.a || benchmark/src/libbenchmark.a benchmark/test/liboutput_test_helper.a
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LINK_LIBRARIES = benchmark/test/liboutput_test_helper.a  benchmark/src/libbenchmark.a
+  OBJECT_DIR = benchmark/test/CMakeFiles/perf_counters_test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = benchmark/test/perf_counters_test
+  TARGET_PDB = perf_counters_test.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target benchmark_setup_teardown_test
+
+
+#############################################
+# Order-only phony target for benchmark_setup_teardown_test
+
+build cmake_object_order_depends_target_benchmark_setup_teardown_test: phony || cmake_object_order_depends_target_benchmark
+
+build benchmark/test/CMakeFiles/benchmark_setup_teardown_test.dir/benchmark_setup_teardown_test.cc.o: CXX_COMPILER__benchmark_setup_teardown_test_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/test/benchmark_setup_teardown_test.cc || cmake_object_order_depends_target_benchmark_setup_teardown_test
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/test/CMakeFiles/benchmark_setup_teardown_test.dir/benchmark_setup_teardown_test.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include
+  OBJECT_DIR = benchmark/test/CMakeFiles/benchmark_setup_teardown_test.dir
+  OBJECT_FILE_DIR = benchmark/test/CMakeFiles/benchmark_setup_teardown_test.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target benchmark_setup_teardown_test
+
+
+#############################################
+# Link the executable benchmark/test/benchmark_setup_teardown_test
+
+build benchmark/test/benchmark_setup_teardown_test: CXX_EXECUTABLE_LINKER__benchmark_setup_teardown_test_Debug benchmark/test/CMakeFiles/benchmark_setup_teardown_test.dir/benchmark_setup_teardown_test.cc.o | benchmark/src/libbenchmark.a || benchmark/src/libbenchmark.a
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LINK_LIBRARIES = benchmark/src/libbenchmark.a
+  OBJECT_DIR = benchmark/test/CMakeFiles/benchmark_setup_teardown_test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = benchmark/test/benchmark_setup_teardown_test
+  TARGET_PDB = benchmark_setup_teardown_test.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target link_main_test
+
+
+#############################################
+# Order-only phony target for link_main_test
+
+build cmake_object_order_depends_target_link_main_test: phony || cmake_object_order_depends_target_benchmark cmake_object_order_depends_target_benchmark_main
+
+build benchmark/test/CMakeFiles/link_main_test.dir/link_main_test.cc.o: CXX_COMPILER__link_main_test_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/test/link_main_test.cc || cmake_object_order_depends_target_link_main_test
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/test/CMakeFiles/link_main_test.dir/link_main_test.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include
+  OBJECT_DIR = benchmark/test/CMakeFiles/link_main_test.dir
+  OBJECT_FILE_DIR = benchmark/test/CMakeFiles/link_main_test.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target link_main_test
+
+
+#############################################
+# Link the executable benchmark/test/link_main_test
+
+build benchmark/test/link_main_test: CXX_EXECUTABLE_LINKER__link_main_test_Debug benchmark/test/CMakeFiles/link_main_test.dir/link_main_test.cc.o | benchmark/src/libbenchmark_main.a benchmark/src/libbenchmark.a || benchmark/src/libbenchmark.a benchmark/src/libbenchmark_main.a
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LINK_LIBRARIES = benchmark/src/libbenchmark_main.a  benchmark/src/libbenchmark.a
+  OBJECT_DIR = benchmark/test/CMakeFiles/link_main_test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = benchmark/test/link_main_test
+  TARGET_PDB = link_main_test.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target args_product_test
+
+
+#############################################
+# Order-only phony target for args_product_test
+
+build cmake_object_order_depends_target_args_product_test: phony || cmake_object_order_depends_target_benchmark
+
+build benchmark/test/CMakeFiles/args_product_test.dir/args_product_test.cc.o: CXX_COMPILER__args_product_test_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/test/args_product_test.cc || cmake_object_order_depends_target_args_product_test
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/test/CMakeFiles/args_product_test.dir/args_product_test.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include
+  OBJECT_DIR = benchmark/test/CMakeFiles/args_product_test.dir
+  OBJECT_FILE_DIR = benchmark/test/CMakeFiles/args_product_test.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target args_product_test
+
+
+#############################################
+# Link the executable benchmark/test/args_product_test
+
+build benchmark/test/args_product_test: CXX_EXECUTABLE_LINKER__args_product_test_Debug benchmark/test/CMakeFiles/args_product_test.dir/args_product_test.cc.o | benchmark/src/libbenchmark.a || benchmark/src/libbenchmark.a
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LINK_LIBRARIES = benchmark/src/libbenchmark.a
+  OBJECT_DIR = benchmark/test/CMakeFiles/args_product_test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = benchmark/test/args_product_test
+  TARGET_PDB = args_product_test.dbg
+
+
+#############################################
+# Utility command for install
+
+build benchmark/test/CMakeFiles/install.util: CUSTOM_COMMAND benchmark/test/all
+  COMMAND = cd /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/benchmark/test && "/Users/adamokruhlica/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/bin/cmake" -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build benchmark/test/install: phony benchmark/test/CMakeFiles/install.util
+
+# =============================================================================
+# Object build statements for EXECUTABLE target options_test
+
+
+#############################################
+# Order-only phony target for options_test
+
+build cmake_object_order_depends_target_options_test: phony || cmake_object_order_depends_target_benchmark
+
+build benchmark/test/CMakeFiles/options_test.dir/options_test.cc.o: CXX_COMPILER__options_test_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/test/options_test.cc || cmake_object_order_depends_target_options_test
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/test/CMakeFiles/options_test.dir/options_test.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include
+  OBJECT_DIR = benchmark/test/CMakeFiles/options_test.dir
+  OBJECT_FILE_DIR = benchmark/test/CMakeFiles/options_test.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target options_test
+
+
+#############################################
+# Link the executable benchmark/test/options_test
+
+build benchmark/test/options_test: CXX_EXECUTABLE_LINKER__options_test_Debug benchmark/test/CMakeFiles/options_test.dir/options_test.cc.o | benchmark/src/libbenchmark.a || benchmark/src/libbenchmark.a
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LINK_LIBRARIES = benchmark/src/libbenchmark.a
+  OBJECT_DIR = benchmark/test/CMakeFiles/options_test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = benchmark/test/options_test
+  TARGET_PDB = options_test.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target map_test
+
+
+#############################################
+# Order-only phony target for map_test
+
+build cmake_object_order_depends_target_map_test: phony || cmake_object_order_depends_target_benchmark
+
+build benchmark/test/CMakeFiles/map_test.dir/map_test.cc.o: CXX_COMPILER__map_test_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/test/map_test.cc || cmake_object_order_depends_target_map_test
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/test/CMakeFiles/map_test.dir/map_test.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include
+  OBJECT_DIR = benchmark/test/CMakeFiles/map_test.dir
+  OBJECT_FILE_DIR = benchmark/test/CMakeFiles/map_test.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target map_test
+
+
+#############################################
+# Link the executable benchmark/test/map_test
+
+build benchmark/test/map_test: CXX_EXECUTABLE_LINKER__map_test_Debug benchmark/test/CMakeFiles/map_test.dir/map_test.cc.o | benchmark/src/libbenchmark.a || benchmark/src/libbenchmark.a
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LINK_LIBRARIES = benchmark/src/libbenchmark.a
+  OBJECT_DIR = benchmark/test/CMakeFiles/map_test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = benchmark/test/map_test
+  TARGET_PDB = map_test.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target report_aggregates_only_test
+
+
+#############################################
+# Order-only phony target for report_aggregates_only_test
+
+build cmake_object_order_depends_target_report_aggregates_only_test: phony || cmake_object_order_depends_target_benchmark cmake_object_order_depends_target_output_test_helper
+
+build benchmark/test/CMakeFiles/report_aggregates_only_test.dir/report_aggregates_only_test.cc.o: CXX_COMPILER__report_aggregates_only_test_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/test/report_aggregates_only_test.cc || cmake_object_order_depends_target_report_aggregates_only_test
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/test/CMakeFiles/report_aggregates_only_test.dir/report_aggregates_only_test.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include
+  OBJECT_DIR = benchmark/test/CMakeFiles/report_aggregates_only_test.dir
+  OBJECT_FILE_DIR = benchmark/test/CMakeFiles/report_aggregates_only_test.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target report_aggregates_only_test
+
+
+#############################################
+# Link the executable benchmark/test/report_aggregates_only_test
+
+build benchmark/test/report_aggregates_only_test: CXX_EXECUTABLE_LINKER__report_aggregates_only_test_Debug benchmark/test/CMakeFiles/report_aggregates_only_test.dir/report_aggregates_only_test.cc.o | benchmark/test/liboutput_test_helper.a benchmark/src/libbenchmark.a || benchmark/src/libbenchmark.a benchmark/test/liboutput_test_helper.a
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LINK_LIBRARIES = benchmark/test/liboutput_test_helper.a  benchmark/src/libbenchmark.a
+  OBJECT_DIR = benchmark/test/CMakeFiles/report_aggregates_only_test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = benchmark/test/report_aggregates_only_test
+  TARGET_PDB = report_aggregates_only_test.dbg
+
+
+#############################################
+# Utility command for list_install_components
+
+build benchmark/test/list_install_components: phony
+
+# =============================================================================
+# Object build statements for EXECUTABLE target benchmark_name_gtest
+
+
+#############################################
+# Order-only phony target for benchmark_name_gtest
+
+build cmake_object_order_depends_target_benchmark_name_gtest: phony || cmake_object_order_depends_target_benchmark cmake_object_order_depends_target_gmock cmake_object_order_depends_target_gmock_main cmake_object_order_depends_target_gtest
+
+build benchmark/test/CMakeFiles/benchmark_name_gtest.dir/benchmark_name_gtest.cc.o: CXX_COMPILER__benchmark_name_gtest_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/test/benchmark_name_gtest.cc || cmake_object_order_depends_target_benchmark_name_gtest
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/test/CMakeFiles/benchmark_name_gtest.dir/benchmark_name_gtest.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include -isystem /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/_deps/googletest-src/googlemock/include -isystem /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/_deps/googletest-src/googlemock -isystem /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/_deps/googletest-src/googletest/include -isystem /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/_deps/googletest-src/googletest
+  OBJECT_DIR = benchmark/test/CMakeFiles/benchmark_name_gtest.dir
+  OBJECT_FILE_DIR = benchmark/test/CMakeFiles/benchmark_name_gtest.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target benchmark_name_gtest
+
+
+#############################################
+# Link the executable benchmark/test/benchmark_name_gtest
+
+build benchmark/test/benchmark_name_gtest: CXX_EXECUTABLE_LINKER__benchmark_name_gtest_Debug benchmark/test/CMakeFiles/benchmark_name_gtest.dir/benchmark_name_gtest.cc.o | benchmark/src/libbenchmark.a lib/libgmock_maind.a lib/libgmockd.a lib/libgtestd.a || benchmark/src/libbenchmark.a lib/libgmock_maind.a lib/libgmockd.a lib/libgtestd.a
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LINK_LIBRARIES = benchmark/src/libbenchmark.a  lib/libgmock_maind.a  lib/libgmockd.a  lib/libgtestd.a
+  OBJECT_DIR = benchmark/test/CMakeFiles/benchmark_name_gtest.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = benchmark/test/benchmark_name_gtest
+  TARGET_PDB = benchmark_name_gtest.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target register_benchmark_test
+
+
+#############################################
+# Order-only phony target for register_benchmark_test
+
+build cmake_object_order_depends_target_register_benchmark_test: phony || cmake_object_order_depends_target_benchmark
+
+build benchmark/test/CMakeFiles/register_benchmark_test.dir/register_benchmark_test.cc.o: CXX_COMPILER__register_benchmark_test_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/test/register_benchmark_test.cc || cmake_object_order_depends_target_register_benchmark_test
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/test/CMakeFiles/register_benchmark_test.dir/register_benchmark_test.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include
+  OBJECT_DIR = benchmark/test/CMakeFiles/register_benchmark_test.dir
+  OBJECT_FILE_DIR = benchmark/test/CMakeFiles/register_benchmark_test.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target register_benchmark_test
+
+
+#############################################
+# Link the executable benchmark/test/register_benchmark_test
+
+build benchmark/test/register_benchmark_test: CXX_EXECUTABLE_LINKER__register_benchmark_test_Debug benchmark/test/CMakeFiles/register_benchmark_test.dir/register_benchmark_test.cc.o | benchmark/src/libbenchmark.a || benchmark/src/libbenchmark.a
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LINK_LIBRARIES = benchmark/src/libbenchmark.a
+  OBJECT_DIR = benchmark/test/CMakeFiles/register_benchmark_test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = benchmark/test/register_benchmark_test
+  TARGET_PDB = register_benchmark_test.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target multiple_ranges_test
+
+
+#############################################
+# Order-only phony target for multiple_ranges_test
+
+build cmake_object_order_depends_target_multiple_ranges_test: phony || cmake_object_order_depends_target_benchmark
+
+build benchmark/test/CMakeFiles/multiple_ranges_test.dir/multiple_ranges_test.cc.o: CXX_COMPILER__multiple_ranges_test_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/test/multiple_ranges_test.cc || cmake_object_order_depends_target_multiple_ranges_test
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/test/CMakeFiles/multiple_ranges_test.dir/multiple_ranges_test.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include
+  OBJECT_DIR = benchmark/test/CMakeFiles/multiple_ranges_test.dir
+  OBJECT_FILE_DIR = benchmark/test/CMakeFiles/multiple_ranges_test.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target multiple_ranges_test
+
+
+#############################################
+# Link the executable benchmark/test/multiple_ranges_test
+
+build benchmark/test/multiple_ranges_test: CXX_EXECUTABLE_LINKER__multiple_ranges_test_Debug benchmark/test/CMakeFiles/multiple_ranges_test.dir/multiple_ranges_test.cc.o | benchmark/src/libbenchmark.a || benchmark/src/libbenchmark.a
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LINK_LIBRARIES = benchmark/src/libbenchmark.a
+  OBJECT_DIR = benchmark/test/CMakeFiles/multiple_ranges_test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = benchmark/test/multiple_ranges_test
+  TARGET_PDB = multiple_ranges_test.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target fixture_test
+
+
+#############################################
+# Order-only phony target for fixture_test
+
+build cmake_object_order_depends_target_fixture_test: phony || cmake_object_order_depends_target_benchmark
+
+build benchmark/test/CMakeFiles/fixture_test.dir/fixture_test.cc.o: CXX_COMPILER__fixture_test_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/test/fixture_test.cc || cmake_object_order_depends_target_fixture_test
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/test/CMakeFiles/fixture_test.dir/fixture_test.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include
+  OBJECT_DIR = benchmark/test/CMakeFiles/fixture_test.dir
+  OBJECT_FILE_DIR = benchmark/test/CMakeFiles/fixture_test.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target fixture_test
+
+
+#############################################
+# Link the executable benchmark/test/fixture_test
+
+build benchmark/test/fixture_test: CXX_EXECUTABLE_LINKER__fixture_test_Debug benchmark/test/CMakeFiles/fixture_test.dir/fixture_test.cc.o | benchmark/src/libbenchmark.a || benchmark/src/libbenchmark.a
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LINK_LIBRARIES = benchmark/src/libbenchmark.a
+  OBJECT_DIR = benchmark/test/CMakeFiles/fixture_test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = benchmark/test/fixture_test
+  TARGET_PDB = fixture_test.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target donotoptimize_test
+
+
+#############################################
+# Order-only phony target for donotoptimize_test
+
+build cmake_object_order_depends_target_donotoptimize_test: phony || cmake_object_order_depends_target_benchmark
+
+build benchmark/test/CMakeFiles/donotoptimize_test.dir/donotoptimize_test.cc.o: CXX_COMPILER__donotoptimize_test_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/test/donotoptimize_test.cc || cmake_object_order_depends_target_donotoptimize_test
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/test/CMakeFiles/donotoptimize_test.dir/donotoptimize_test.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -O3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include
+  OBJECT_DIR = benchmark/test/CMakeFiles/donotoptimize_test.dir
+  OBJECT_FILE_DIR = benchmark/test/CMakeFiles/donotoptimize_test.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target donotoptimize_test
+
+
+#############################################
+# Link the executable benchmark/test/donotoptimize_test
+
+build benchmark/test/donotoptimize_test: CXX_EXECUTABLE_LINKER__donotoptimize_test_Debug benchmark/test/CMakeFiles/donotoptimize_test.dir/donotoptimize_test.cc.o | benchmark/src/libbenchmark.a || benchmark/src/libbenchmark.a
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LINK_LIBRARIES = benchmark/src/libbenchmark.a
+  OBJECT_DIR = benchmark/test/CMakeFiles/donotoptimize_test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = benchmark/test/donotoptimize_test
+  TARGET_PDB = donotoptimize_test.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target templated_fixture_test
+
+
+#############################################
+# Order-only phony target for templated_fixture_test
+
+build cmake_object_order_depends_target_templated_fixture_test: phony || cmake_object_order_depends_target_benchmark cmake_object_order_depends_target_output_test_helper
+
+build benchmark/test/CMakeFiles/templated_fixture_test.dir/templated_fixture_test.cc.o: CXX_COMPILER__templated_fixture_test_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/test/templated_fixture_test.cc || cmake_object_order_depends_target_templated_fixture_test
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/test/CMakeFiles/templated_fixture_test.dir/templated_fixture_test.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include
+  OBJECT_DIR = benchmark/test/CMakeFiles/templated_fixture_test.dir
+  OBJECT_FILE_DIR = benchmark/test/CMakeFiles/templated_fixture_test.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target templated_fixture_test
+
+
+#############################################
+# Link the executable benchmark/test/templated_fixture_test
+
+build benchmark/test/templated_fixture_test: CXX_EXECUTABLE_LINKER__templated_fixture_test_Debug benchmark/test/CMakeFiles/templated_fixture_test.dir/templated_fixture_test.cc.o | benchmark/test/liboutput_test_helper.a benchmark/src/libbenchmark.a || benchmark/src/libbenchmark.a benchmark/test/liboutput_test_helper.a
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LINK_LIBRARIES = benchmark/test/liboutput_test_helper.a  benchmark/src/libbenchmark.a
+  OBJECT_DIR = benchmark/test/CMakeFiles/templated_fixture_test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = benchmark/test/templated_fixture_test
+  TARGET_PDB = templated_fixture_test.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target statistics_gtest
+
+
+#############################################
+# Order-only phony target for statistics_gtest
+
+build cmake_object_order_depends_target_statistics_gtest: phony || cmake_object_order_depends_target_benchmark cmake_object_order_depends_target_gmock cmake_object_order_depends_target_gmock_main cmake_object_order_depends_target_gtest
+
+build benchmark/test/CMakeFiles/statistics_gtest.dir/statistics_gtest.cc.o: CXX_COMPILER__statistics_gtest_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/test/statistics_gtest.cc || cmake_object_order_depends_target_statistics_gtest
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/test/CMakeFiles/statistics_gtest.dir/statistics_gtest.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include -isystem /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/_deps/googletest-src/googlemock/include -isystem /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/_deps/googletest-src/googlemock -isystem /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/_deps/googletest-src/googletest/include -isystem /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/_deps/googletest-src/googletest
+  OBJECT_DIR = benchmark/test/CMakeFiles/statistics_gtest.dir
+  OBJECT_FILE_DIR = benchmark/test/CMakeFiles/statistics_gtest.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target statistics_gtest
+
+
+#############################################
+# Link the executable benchmark/test/statistics_gtest
+
+build benchmark/test/statistics_gtest: CXX_EXECUTABLE_LINKER__statistics_gtest_Debug benchmark/test/CMakeFiles/statistics_gtest.dir/statistics_gtest.cc.o | benchmark/src/libbenchmark.a lib/libgmock_maind.a lib/libgmockd.a lib/libgtestd.a || benchmark/src/libbenchmark.a lib/libgmock_maind.a lib/libgmockd.a lib/libgtestd.a
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LINK_LIBRARIES = benchmark/src/libbenchmark.a  lib/libgmock_maind.a  lib/libgmockd.a  lib/libgtestd.a
+  OBJECT_DIR = benchmark/test/CMakeFiles/statistics_gtest.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = benchmark/test/statistics_gtest
+  TARGET_PDB = statistics_gtest.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target display_aggregates_only_test
+
+
+#############################################
+# Order-only phony target for display_aggregates_only_test
+
+build cmake_object_order_depends_target_display_aggregates_only_test: phony || cmake_object_order_depends_target_benchmark cmake_object_order_depends_target_output_test_helper
+
+build benchmark/test/CMakeFiles/display_aggregates_only_test.dir/display_aggregates_only_test.cc.o: CXX_COMPILER__display_aggregates_only_test_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/test/display_aggregates_only_test.cc || cmake_object_order_depends_target_display_aggregates_only_test
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/test/CMakeFiles/display_aggregates_only_test.dir/display_aggregates_only_test.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include
+  OBJECT_DIR = benchmark/test/CMakeFiles/display_aggregates_only_test.dir
+  OBJECT_FILE_DIR = benchmark/test/CMakeFiles/display_aggregates_only_test.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target display_aggregates_only_test
+
+
+#############################################
+# Link the executable benchmark/test/display_aggregates_only_test
+
+build benchmark/test/display_aggregates_only_test: CXX_EXECUTABLE_LINKER__display_aggregates_only_test_Debug benchmark/test/CMakeFiles/display_aggregates_only_test.dir/display_aggregates_only_test.cc.o | benchmark/test/liboutput_test_helper.a benchmark/src/libbenchmark.a || benchmark/src/libbenchmark.a benchmark/test/liboutput_test_helper.a
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LINK_LIBRARIES = benchmark/test/liboutput_test_helper.a  benchmark/src/libbenchmark.a
+  OBJECT_DIR = benchmark/test/CMakeFiles/display_aggregates_only_test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = benchmark/test/display_aggregates_only_test
+  TARGET_PDB = display_aggregates_only_test.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target reporter_output_test
+
+
+#############################################
+# Order-only phony target for reporter_output_test
+
+build cmake_object_order_depends_target_reporter_output_test: phony || cmake_object_order_depends_target_benchmark cmake_object_order_depends_target_output_test_helper
+
+build benchmark/test/CMakeFiles/reporter_output_test.dir/reporter_output_test.cc.o: CXX_COMPILER__reporter_output_test_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/test/reporter_output_test.cc || cmake_object_order_depends_target_reporter_output_test
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/test/CMakeFiles/reporter_output_test.dir/reporter_output_test.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include
+  OBJECT_DIR = benchmark/test/CMakeFiles/reporter_output_test.dir
+  OBJECT_FILE_DIR = benchmark/test/CMakeFiles/reporter_output_test.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target reporter_output_test
+
+
+#############################################
+# Link the executable benchmark/test/reporter_output_test
+
+build benchmark/test/reporter_output_test: CXX_EXECUTABLE_LINKER__reporter_output_test_Debug benchmark/test/CMakeFiles/reporter_output_test.dir/reporter_output_test.cc.o | benchmark/test/liboutput_test_helper.a benchmark/src/libbenchmark.a || benchmark/src/libbenchmark.a benchmark/test/liboutput_test_helper.a
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LINK_LIBRARIES = benchmark/test/liboutput_test_helper.a  benchmark/src/libbenchmark.a
+  OBJECT_DIR = benchmark/test/CMakeFiles/reporter_output_test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = benchmark/test/reporter_output_test
+  TARGET_PDB = reporter_output_test.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target repetitions_test
+
+
+#############################################
+# Order-only phony target for repetitions_test
+
+build cmake_object_order_depends_target_repetitions_test: phony || cmake_object_order_depends_target_benchmark cmake_object_order_depends_target_output_test_helper
+
+build benchmark/test/CMakeFiles/repetitions_test.dir/repetitions_test.cc.o: CXX_COMPILER__repetitions_test_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/test/repetitions_test.cc || cmake_object_order_depends_target_repetitions_test
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/test/CMakeFiles/repetitions_test.dir/repetitions_test.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include
+  OBJECT_DIR = benchmark/test/CMakeFiles/repetitions_test.dir
+  OBJECT_FILE_DIR = benchmark/test/CMakeFiles/repetitions_test.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target repetitions_test
+
+
+#############################################
+# Link the executable benchmark/test/repetitions_test
+
+build benchmark/test/repetitions_test: CXX_EXECUTABLE_LINKER__repetitions_test_Debug benchmark/test/CMakeFiles/repetitions_test.dir/repetitions_test.cc.o | benchmark/test/liboutput_test_helper.a benchmark/src/libbenchmark.a || benchmark/src/libbenchmark.a benchmark/test/liboutput_test_helper.a
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LINK_LIBRARIES = benchmark/test/liboutput_test_helper.a  benchmark/src/libbenchmark.a
+  OBJECT_DIR = benchmark/test/CMakeFiles/repetitions_test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = benchmark/test/repetitions_test
+  TARGET_PDB = repetitions_test.dbg
+
+
+#############################################
+# Utility command for install/strip
+
+build benchmark/test/CMakeFiles/install/strip.util: CUSTOM_COMMAND benchmark/test/all
+  COMMAND = cd /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/benchmark/test && "/Users/adamokruhlica/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/bin/cmake" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build benchmark/test/install/strip: phony benchmark/test/CMakeFiles/install/strip.util
+
+# =============================================================================
+# Object build statements for EXECUTABLE target string_util_gtest
+
+
+#############################################
+# Order-only phony target for string_util_gtest
+
+build cmake_object_order_depends_target_string_util_gtest: phony || cmake_object_order_depends_target_benchmark cmake_object_order_depends_target_gmock cmake_object_order_depends_target_gmock_main cmake_object_order_depends_target_gtest
+
+build benchmark/test/CMakeFiles/string_util_gtest.dir/string_util_gtest.cc.o: CXX_COMPILER__string_util_gtest_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/test/string_util_gtest.cc || cmake_object_order_depends_target_string_util_gtest
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/test/CMakeFiles/string_util_gtest.dir/string_util_gtest.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include -isystem /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/_deps/googletest-src/googlemock/include -isystem /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/_deps/googletest-src/googlemock -isystem /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/_deps/googletest-src/googletest/include -isystem /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/_deps/googletest-src/googletest
+  OBJECT_DIR = benchmark/test/CMakeFiles/string_util_gtest.dir
+  OBJECT_FILE_DIR = benchmark/test/CMakeFiles/string_util_gtest.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target string_util_gtest
+
+
+#############################################
+# Link the executable benchmark/test/string_util_gtest
+
+build benchmark/test/string_util_gtest: CXX_EXECUTABLE_LINKER__string_util_gtest_Debug benchmark/test/CMakeFiles/string_util_gtest.dir/string_util_gtest.cc.o | benchmark/src/libbenchmark.a lib/libgmock_maind.a lib/libgmockd.a lib/libgtestd.a || benchmark/src/libbenchmark.a lib/libgmock_maind.a lib/libgmockd.a lib/libgtestd.a
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LINK_LIBRARIES = benchmark/src/libbenchmark.a  lib/libgmock_maind.a  lib/libgmockd.a  lib/libgtestd.a
+  OBJECT_DIR = benchmark/test/CMakeFiles/string_util_gtest.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = benchmark/test/string_util_gtest
+  TARGET_PDB = string_util_gtest.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target skip_with_error_test
+
+
+#############################################
+# Order-only phony target for skip_with_error_test
+
+build cmake_object_order_depends_target_skip_with_error_test: phony || cmake_object_order_depends_target_benchmark
+
+build benchmark/test/CMakeFiles/skip_with_error_test.dir/skip_with_error_test.cc.o: CXX_COMPILER__skip_with_error_test_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/test/skip_with_error_test.cc || cmake_object_order_depends_target_skip_with_error_test
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/test/CMakeFiles/skip_with_error_test.dir/skip_with_error_test.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include
+  OBJECT_DIR = benchmark/test/CMakeFiles/skip_with_error_test.dir
+  OBJECT_FILE_DIR = benchmark/test/CMakeFiles/skip_with_error_test.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target skip_with_error_test
+
+
+#############################################
+# Link the executable benchmark/test/skip_with_error_test
+
+build benchmark/test/skip_with_error_test: CXX_EXECUTABLE_LINKER__skip_with_error_test_Debug benchmark/test/CMakeFiles/skip_with_error_test.dir/skip_with_error_test.cc.o | benchmark/src/libbenchmark.a || benchmark/src/libbenchmark.a
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LINK_LIBRARIES = benchmark/src/libbenchmark.a
+  OBJECT_DIR = benchmark/test/CMakeFiles/skip_with_error_test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = benchmark/test/skip_with_error_test
+  TARGET_PDB = skip_with_error_test.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target basic_test
+
+
+#############################################
+# Order-only phony target for basic_test
+
+build cmake_object_order_depends_target_basic_test: phony || cmake_object_order_depends_target_benchmark
+
+build benchmark/test/CMakeFiles/basic_test.dir/basic_test.cc.o: CXX_COMPILER__basic_test_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/test/basic_test.cc || cmake_object_order_depends_target_basic_test
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/test/CMakeFiles/basic_test.dir/basic_test.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include
+  OBJECT_DIR = benchmark/test/CMakeFiles/basic_test.dir
+  OBJECT_FILE_DIR = benchmark/test/CMakeFiles/basic_test.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target basic_test
+
+
+#############################################
+# Link the executable benchmark/test/basic_test
+
+build benchmark/test/basic_test: CXX_EXECUTABLE_LINKER__basic_test_Debug benchmark/test/CMakeFiles/basic_test.dir/basic_test.cc.o | benchmark/src/libbenchmark.a || benchmark/src/libbenchmark.a
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LINK_LIBRARIES = benchmark/src/libbenchmark.a
+  OBJECT_DIR = benchmark/test/CMakeFiles/basic_test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = benchmark/test/basic_test
+  TARGET_PDB = basic_test.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target filter_test
+
+
+#############################################
+# Order-only phony target for filter_test
+
+build cmake_object_order_depends_target_filter_test: phony || cmake_object_order_depends_target_benchmark
+
+build benchmark/test/CMakeFiles/filter_test.dir/filter_test.cc.o: CXX_COMPILER__filter_test_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/test/filter_test.cc || cmake_object_order_depends_target_filter_test
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/test/CMakeFiles/filter_test.dir/filter_test.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include
+  OBJECT_DIR = benchmark/test/CMakeFiles/filter_test.dir
+  OBJECT_FILE_DIR = benchmark/test/CMakeFiles/filter_test.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target filter_test
+
+
+#############################################
+# Link the executable benchmark/test/filter_test
+
+build benchmark/test/filter_test: CXX_EXECUTABLE_LINKER__filter_test_Debug benchmark/test/CMakeFiles/filter_test.dir/filter_test.cc.o | benchmark/src/libbenchmark.a || benchmark/src/libbenchmark.a
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LINK_LIBRARIES = benchmark/src/libbenchmark.a
+  OBJECT_DIR = benchmark/test/CMakeFiles/filter_test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = benchmark/test/filter_test
+  TARGET_PDB = filter_test.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target user_counters_test
+
+
+#############################################
+# Order-only phony target for user_counters_test
+
+build cmake_object_order_depends_target_user_counters_test: phony || cmake_object_order_depends_target_benchmark cmake_object_order_depends_target_output_test_helper
+
+build benchmark/test/CMakeFiles/user_counters_test.dir/user_counters_test.cc.o: CXX_COMPILER__user_counters_test_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/test/user_counters_test.cc || cmake_object_order_depends_target_user_counters_test
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/test/CMakeFiles/user_counters_test.dir/user_counters_test.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include
+  OBJECT_DIR = benchmark/test/CMakeFiles/user_counters_test.dir
+  OBJECT_FILE_DIR = benchmark/test/CMakeFiles/user_counters_test.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target user_counters_test
+
+
+#############################################
+# Link the executable benchmark/test/user_counters_test
+
+build benchmark/test/user_counters_test: CXX_EXECUTABLE_LINKER__user_counters_test_Debug benchmark/test/CMakeFiles/user_counters_test.dir/user_counters_test.cc.o | benchmark/test/liboutput_test_helper.a benchmark/src/libbenchmark.a || benchmark/src/libbenchmark.a benchmark/test/liboutput_test_helper.a
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LINK_LIBRARIES = benchmark/test/liboutput_test_helper.a  benchmark/src/libbenchmark.a
+  OBJECT_DIR = benchmark/test/CMakeFiles/user_counters_test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = benchmark/test/user_counters_test
+  TARGET_PDB = user_counters_test.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target spec_arg_test
+
+
+#############################################
+# Order-only phony target for spec_arg_test
+
+build cmake_object_order_depends_target_spec_arg_test: phony || cmake_object_order_depends_target_benchmark
+
+build benchmark/test/CMakeFiles/spec_arg_test.dir/spec_arg_test.cc.o: CXX_COMPILER__spec_arg_test_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/test/spec_arg_test.cc || cmake_object_order_depends_target_spec_arg_test
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/test/CMakeFiles/spec_arg_test.dir/spec_arg_test.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include
+  OBJECT_DIR = benchmark/test/CMakeFiles/spec_arg_test.dir
+  OBJECT_FILE_DIR = benchmark/test/CMakeFiles/spec_arg_test.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target spec_arg_test
+
+
+#############################################
+# Link the executable benchmark/test/spec_arg_test
+
+build benchmark/test/spec_arg_test: CXX_EXECUTABLE_LINKER__spec_arg_test_Debug benchmark/test/CMakeFiles/spec_arg_test.dir/spec_arg_test.cc.o | benchmark/src/libbenchmark.a || benchmark/src/libbenchmark.a
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LINK_LIBRARIES = benchmark/src/libbenchmark.a
+  OBJECT_DIR = benchmark/test/CMakeFiles/spec_arg_test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = benchmark/test/spec_arg_test
+  TARGET_PDB = spec_arg_test.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target benchmark_test
+
+
+#############################################
+# Order-only phony target for benchmark_test
+
+build cmake_object_order_depends_target_benchmark_test: phony || cmake_object_order_depends_target_benchmark
+
+build benchmark/test/CMakeFiles/benchmark_test.dir/benchmark_test.cc.o: CXX_COMPILER__benchmark_test_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/test/benchmark_test.cc || cmake_object_order_depends_target_benchmark_test
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/test/CMakeFiles/benchmark_test.dir/benchmark_test.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include
+  OBJECT_DIR = benchmark/test/CMakeFiles/benchmark_test.dir
+  OBJECT_FILE_DIR = benchmark/test/CMakeFiles/benchmark_test.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target benchmark_test
+
+
+#############################################
+# Link the executable benchmark/test/benchmark_test
+
+build benchmark/test/benchmark_test: CXX_EXECUTABLE_LINKER__benchmark_test_Debug benchmark/test/CMakeFiles/benchmark_test.dir/benchmark_test.cc.o | benchmark/src/libbenchmark.a || benchmark/src/libbenchmark.a
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LINK_LIBRARIES = benchmark/src/libbenchmark.a
+  OBJECT_DIR = benchmark/test/CMakeFiles/benchmark_test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = benchmark/test/benchmark_test
+  TARGET_PDB = benchmark_test.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target diagnostics_test
+
+
+#############################################
+# Order-only phony target for diagnostics_test
+
+build cmake_object_order_depends_target_diagnostics_test: phony || cmake_object_order_depends_target_benchmark
+
+build benchmark/test/CMakeFiles/diagnostics_test.dir/diagnostics_test.cc.o: CXX_COMPILER__diagnostics_test_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/test/diagnostics_test.cc || cmake_object_order_depends_target_diagnostics_test
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/test/CMakeFiles/diagnostics_test.dir/diagnostics_test.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include
+  OBJECT_DIR = benchmark/test/CMakeFiles/diagnostics_test.dir
+  OBJECT_FILE_DIR = benchmark/test/CMakeFiles/diagnostics_test.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target diagnostics_test
+
+
+#############################################
+# Link the executable benchmark/test/diagnostics_test
+
+build benchmark/test/diagnostics_test: CXX_EXECUTABLE_LINKER__diagnostics_test_Debug benchmark/test/CMakeFiles/diagnostics_test.dir/diagnostics_test.cc.o | benchmark/src/libbenchmark.a || benchmark/src/libbenchmark.a
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LINK_LIBRARIES = benchmark/src/libbenchmark.a
+  OBJECT_DIR = benchmark/test/CMakeFiles/diagnostics_test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = benchmark/test/diagnostics_test
+  TARGET_PDB = diagnostics_test.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target memory_manager_test
+
+
+#############################################
+# Order-only phony target for memory_manager_test
+
+build cmake_object_order_depends_target_memory_manager_test: phony || cmake_object_order_depends_target_benchmark cmake_object_order_depends_target_output_test_helper
+
+build benchmark/test/CMakeFiles/memory_manager_test.dir/memory_manager_test.cc.o: CXX_COMPILER__memory_manager_test_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/test/memory_manager_test.cc || cmake_object_order_depends_target_memory_manager_test
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/test/CMakeFiles/memory_manager_test.dir/memory_manager_test.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include
+  OBJECT_DIR = benchmark/test/CMakeFiles/memory_manager_test.dir
+  OBJECT_FILE_DIR = benchmark/test/CMakeFiles/memory_manager_test.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target memory_manager_test
+
+
+#############################################
+# Link the executable benchmark/test/memory_manager_test
+
+build benchmark/test/memory_manager_test: CXX_EXECUTABLE_LINKER__memory_manager_test_Debug benchmark/test/CMakeFiles/memory_manager_test.dir/memory_manager_test.cc.o | benchmark/test/liboutput_test_helper.a benchmark/src/libbenchmark.a || benchmark/src/libbenchmark.a benchmark/test/liboutput_test_helper.a
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LINK_LIBRARIES = benchmark/test/liboutput_test_helper.a  benchmark/src/libbenchmark.a
+  OBJECT_DIR = benchmark/test/CMakeFiles/memory_manager_test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = benchmark/test/memory_manager_test
+  TARGET_PDB = memory_manager_test.dbg
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target output_test_helper
+
+
+#############################################
+# Order-only phony target for output_test_helper
+
+build cmake_object_order_depends_target_output_test_helper: phony || benchmark/test/CMakeFiles/output_test_helper.dir
+
+build benchmark/test/CMakeFiles/output_test_helper.dir/output_test_helper.cc.o: CXX_COMPILER__output_test_helper_Debug /Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/test/output_test_helper.cc || cmake_object_order_depends_target_output_test_helper
+  DEFINES = -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK
+  DEP_FILE = benchmark/test/CMakeFiles/output_test_helper.dir/output_test_helper.cc.o.d
+  FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3 -std=gnu++17
+  INCLUDES = -I/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark/include
+  OBJECT_DIR = benchmark/test/CMakeFiles/output_test_helper.dir
+  OBJECT_FILE_DIR = benchmark/test/CMakeFiles/output_test_helper.dir
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target output_test_helper
+
+
+#############################################
+# Link the static library benchmark/test/liboutput_test_helper.a
+
+build benchmark/test/liboutput_test_helper.a: CXX_STATIC_LIBRARY_LINKER__output_test_helper_Debug benchmark/test/CMakeFiles/output_test_helper.dir/output_test_helper.cc.o
+  ARCH_FLAGS = -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.3
+  LANGUAGE_COMPILE_FLAGS = -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -g
+  OBJECT_DIR = benchmark/test/CMakeFiles/output_test_helper.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = benchmark/test/liboutput_test_helper.a
+  TARGET_PDB = output_test_helper.a.dbg
+
+# =============================================================================
 # Target aliases.
 
 build QTreeLib: phony libQTreeLib.a
+
+build args_product_test: phony benchmark/test/args_product_test
+
+build basic_test: phony benchmark/test/basic_test
+
+build benchmark: phony benchmark/src/libbenchmark.a
+
+build benchmark_gtest: phony benchmark/test/benchmark_gtest
+
+build benchmark_main: phony benchmark/src/libbenchmark_main.a
+
+build benchmark_name_gtest: phony benchmark/test/benchmark_name_gtest
+
+build benchmark_random_interleaving_gtest: phony benchmark/test/benchmark_random_interleaving_gtest
+
+build benchmark_setup_teardown_test: phony benchmark/test/benchmark_setup_teardown_test
+
+build benchmark_test: phony benchmark/test/benchmark_test
+
+build commandlineflags_gtest: phony benchmark/test/commandlineflags_gtest
+
+build complexity_test: phony benchmark/test/complexity_test
+
+build cxx03_test: phony benchmark/test/cxx03_test
+
+build diagnostics_test: phony benchmark/test/diagnostics_test
+
+build display_aggregates_only_test: phony benchmark/test/display_aggregates_only_test
+
+build donotoptimize_test: phony benchmark/test/donotoptimize_test
+
+build filter_test: phony benchmark/test/filter_test
+
+build fixture_test: phony benchmark/test/fixture_test
 
 build gmock: phony lib/libgmockd.a
 
@@ -557,6 +2270,12 @@ build gtest: phony lib/libgtestd.a
 
 build gtest_main: phony lib/libgtest_maind.a
 
+build internal_threading_test: phony benchmark/test/internal_threading_test
+
+build libbenchmark.a: phony benchmark/src/libbenchmark.a
+
+build libbenchmark_main.a: phony benchmark/src/libbenchmark_main.a
+
 build libgmock_maind.a: phony lib/libgmock_maind.a
 
 build libgmockd.a: phony lib/libgmockd.a
@@ -564,6 +2283,48 @@ build libgmockd.a: phony lib/libgmockd.a
 build libgtest_maind.a: phony lib/libgtest_maind.a
 
 build libgtestd.a: phony lib/libgtestd.a
+
+build liboutput_test_helper.a: phony benchmark/test/liboutput_test_helper.a
+
+build link_main_test: phony benchmark/test/link_main_test
+
+build map_test: phony benchmark/test/map_test
+
+build memory_manager_test: phony benchmark/test/memory_manager_test
+
+build multiple_ranges_test: phony benchmark/test/multiple_ranges_test
+
+build options_test: phony benchmark/test/options_test
+
+build output_test_helper: phony benchmark/test/liboutput_test_helper.a
+
+build perf_counters_gtest: phony benchmark/test/perf_counters_gtest
+
+build perf_counters_test: phony benchmark/test/perf_counters_test
+
+build register_benchmark_test: phony benchmark/test/register_benchmark_test
+
+build repetitions_test: phony benchmark/test/repetitions_test
+
+build report_aggregates_only_test: phony benchmark/test/report_aggregates_only_test
+
+build reporter_output_test: phony benchmark/test/reporter_output_test
+
+build skip_with_error_test: phony benchmark/test/skip_with_error_test
+
+build spec_arg_test: phony benchmark/test/spec_arg_test
+
+build statistics_gtest: phony benchmark/test/statistics_gtest
+
+build string_util_gtest: phony benchmark/test/string_util_gtest
+
+build templated_fixture_test: phony benchmark/test/templated_fixture_test
+
+build user_counters_tabular_test: phony benchmark/test/user_counters_tabular_test
+
+build user_counters_test: phony benchmark/test/user_counters_test
+
+build user_counters_thousands_test: phony benchmark/test/user_counters_thousands_test
 
 # =============================================================================
 # Folder targets.
@@ -573,7 +2334,7 @@ build libgtestd.a: phony lib/libgtestd.a
 #############################################
 # Folder: /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug
 
-build all: phony libQTreeLib.a QuadTest QuadDemo _deps/googletest-build/all
+build all: phony QuadBenchmark QuadTest QuadDemo libQTreeLib.a _deps/googletest-build/all benchmark/all
 
 # =============================================================================
 
@@ -597,20 +2358,41 @@ build _deps/googletest-build/googlemock/all: phony lib/libgmockd.a lib/libgmock_
 build _deps/googletest-build/googletest/all: phony lib/libgtest_maind.a lib/libgtestd.a
 
 # =============================================================================
+
+#############################################
+# Folder: /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/benchmark
+
+build benchmark/all: phony benchmark/src/all benchmark/test/all
+
+# =============================================================================
+
+#############################################
+# Folder: /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/benchmark/src
+
+build benchmark/src/all: phony benchmark/src/libbenchmark_main.a benchmark/src/libbenchmark.a
+
+# =============================================================================
+
+#############################################
+# Folder: /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/benchmark/test
+
+build benchmark/test/all: phony benchmark/test/commandlineflags_gtest benchmark/test/benchmark_random_interleaving_gtest benchmark/test/benchmark_gtest benchmark/test/complexity_test benchmark/test/cxx03_test benchmark/test/user_counters_thousands_test benchmark/test/user_counters_tabular_test benchmark/test/internal_threading_test benchmark/test/perf_counters_gtest benchmark/test/perf_counters_test benchmark/test/benchmark_setup_teardown_test benchmark/test/link_main_test benchmark/test/args_product_test benchmark/test/options_test benchmark/test/map_test benchmark/test/report_aggregates_only_test benchmark/test/benchmark_name_gtest benchmark/test/register_benchmark_test benchmark/test/multiple_ranges_test benchmark/test/fixture_test benchmark/test/donotoptimize_test benchmark/test/templated_fixture_test benchmark/test/statistics_gtest benchmark/test/display_aggregates_only_test benchmark/test/reporter_output_test benchmark/test/repetitions_test benchmark/test/string_util_gtest benchmark/test/skip_with_error_test benchmark/test/basic_test benchmark/test/filter_test benchmark/test/user_counters_test benchmark/test/spec_arg_test benchmark/test/benchmark_test benchmark/test/diagnostics_test benchmark/test/memory_manager_test benchmark/test/liboutput_test_helper.a
+
+# =============================================================================
 # Built-in targets
 
 
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | ../CMakeLists.txt /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeCInformation.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeCXXInformation.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeCommonLanguageInclude.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeDependentOption.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeGenericSystem.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeInitializeConfigs.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeLanguageInformation.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakePackageConfigHelpers.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeSystemSpecificInformation.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeSystemSpecificInitialize.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CheckCSourceCompiles.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CheckIncludeFile.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CheckLibraryExists.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/AppleClang-C.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/AppleClang-CXX.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/Clang.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/GNU.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/FetchContent.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/FetchContent/CMakeLists.cmake.in /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/FindPackageHandleStandardArgs.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/FindPackageMessage.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/FindPython.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/FindPython/Support.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/FindThreads.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/GNUInstallDirs.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Internal/CheckSourceCompiles.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-AppleClang-C.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-AppleClang-CXX.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-Clang-C.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-Clang-CXX.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-Clang.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Darwin-Initialize.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Darwin.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/UnixPaths.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles/3.21.1/CMakeCCompiler.cmake CMakeFiles/3.21.1/CMakeCXXCompiler.cmake CMakeFiles/3.21.1/CMakeSystem.cmake _deps/googletest-src/CMakeLists.txt _deps/googletest-src/googlemock/CMakeLists.txt _deps/googletest-src/googlemock/cmake/gmock.pc.in _deps/googletest-src/googlemock/cmake/gmock_main.pc.in _deps/googletest-src/googletest/CMakeLists.txt _deps/googletest-src/googletest/cmake/Config.cmake.in _deps/googletest-src/googletest/cmake/gtest.pc.in _deps/googletest-src/googletest/cmake/gtest_main.pc.in _deps/googletest-src/googletest/cmake/internal_utils.cmake
+build build.ninja: RERUN_CMAKE | ../CMakeLists.txt ../benchmark/CMakeLists.txt ../benchmark/cmake/AddCXXCompilerFlag.cmake ../benchmark/cmake/CXXFeatureCheck.cmake ../benchmark/cmake/Config.cmake.in ../benchmark/cmake/GetGitVersion.cmake ../benchmark/cmake/benchmark.pc.in ../benchmark/src/CMakeLists.txt ../benchmark/test/CMakeLists.txt /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/BasicConfigVersion-SameMajorVersion.cmake.in /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeCInformation.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeCXXInformation.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeCommonLanguageInclude.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeDependentOption.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeGenericSystem.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeInitializeConfigs.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeLanguageInformation.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakePackageConfigHelpers.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeSystemSpecificInformation.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeSystemSpecificInitialize.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CheckCSourceCompiles.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CheckCXXCompilerFlag.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CheckCXXSourceCompiles.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CheckIncludeFile.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CheckLibraryExists.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/AppleClang-C.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/AppleClang-CXX.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/Clang.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/GNU.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/FetchContent.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/FetchContent/CMakeLists.cmake.in /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/FindGit.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/FindPackageHandleStandardArgs.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/FindPackageMessage.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/FindPython.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/FindPython/Support.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/FindThreads.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/GNUInstallDirs.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Internal/CheckCompilerFlag.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Internal/CheckSourceCompiles.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-AppleClang-C.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-AppleClang-CXX.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-Clang-C.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-Clang-CXX.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-Clang.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Darwin-Initialize.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Darwin.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/UnixPaths.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles/3.21.1/CMakeCCompiler.cmake CMakeFiles/3.21.1/CMakeCXXCompiler.cmake CMakeFiles/3.21.1/CMakeSystem.cmake _deps/googletest-src/CMakeLists.txt _deps/googletest-src/googlemock/CMakeLists.txt _deps/googletest-src/googlemock/cmake/gmock.pc.in _deps/googletest-src/googlemock/cmake/gmock_main.pc.in _deps/googletest-src/googletest/CMakeLists.txt _deps/googletest-src/googletest/cmake/Config.cmake.in _deps/googletest-src/googletest/cmake/gtest.pc.in _deps/googletest-src/googletest/cmake/gtest_main.pc.in _deps/googletest-src/googletest/cmake/internal_utils.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build ../CMakeLists.txt /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeCInformation.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeCXXInformation.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeCommonLanguageInclude.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeDependentOption.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeGenericSystem.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeInitializeConfigs.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeLanguageInformation.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakePackageConfigHelpers.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeSystemSpecificInformation.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeSystemSpecificInitialize.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CheckCSourceCompiles.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CheckIncludeFile.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CheckLibraryExists.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/AppleClang-C.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/AppleClang-CXX.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/Clang.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/GNU.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/FetchContent.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/FetchContent/CMakeLists.cmake.in /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/FindPackageHandleStandardArgs.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/FindPackageMessage.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/FindPython.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/FindPython/Support.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/FindThreads.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/GNUInstallDirs.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Internal/CheckSourceCompiles.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-AppleClang-C.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-AppleClang-CXX.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-Clang-C.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-Clang-CXX.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-Clang.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Darwin-Initialize.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Darwin.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/UnixPaths.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles/3.21.1/CMakeCCompiler.cmake CMakeFiles/3.21.1/CMakeCXXCompiler.cmake CMakeFiles/3.21.1/CMakeSystem.cmake _deps/googletest-src/CMakeLists.txt _deps/googletest-src/googlemock/CMakeLists.txt _deps/googletest-src/googlemock/cmake/gmock.pc.in _deps/googletest-src/googlemock/cmake/gmock_main.pc.in _deps/googletest-src/googletest/CMakeLists.txt _deps/googletest-src/googletest/cmake/Config.cmake.in _deps/googletest-src/googletest/cmake/gtest.pc.in _deps/googletest-src/googletest/cmake/gtest_main.pc.in _deps/googletest-src/googletest/cmake/internal_utils.cmake: phony
+build ../CMakeLists.txt ../benchmark/CMakeLists.txt ../benchmark/cmake/AddCXXCompilerFlag.cmake ../benchmark/cmake/CXXFeatureCheck.cmake ../benchmark/cmake/Config.cmake.in ../benchmark/cmake/GetGitVersion.cmake ../benchmark/cmake/benchmark.pc.in ../benchmark/src/CMakeLists.txt ../benchmark/test/CMakeLists.txt /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/BasicConfigVersion-SameMajorVersion.cmake.in /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeCInformation.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeCXXInformation.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeCommonLanguageInclude.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeDependentOption.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeGenericSystem.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeInitializeConfigs.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeLanguageInformation.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakePackageConfigHelpers.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeSystemSpecificInformation.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CMakeSystemSpecificInitialize.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CheckCSourceCompiles.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CheckCXXCompilerFlag.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CheckCXXSourceCompiles.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CheckIncludeFile.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/CheckLibraryExists.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/AppleClang-C.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/AppleClang-CXX.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/Clang.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Compiler/GNU.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/FetchContent.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/FetchContent/CMakeLists.cmake.in /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/FindGit.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/FindPackageHandleStandardArgs.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/FindPackageMessage.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/FindPython.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/FindPython/Support.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/FindThreads.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/GNUInstallDirs.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Internal/CheckCompilerFlag.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Internal/CheckSourceCompiles.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-AppleClang-C.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-AppleClang-CXX.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-Clang-C.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-Clang-CXX.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Apple-Clang.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Darwin-Initialize.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/Darwin.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/Platform/UnixPaths.cmake /Users/adamokruhlica/Library/Application$ Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21/Modules/WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles/3.21.1/CMakeCCompiler.cmake CMakeFiles/3.21.1/CMakeCXXCompiler.cmake CMakeFiles/3.21.1/CMakeSystem.cmake _deps/googletest-src/CMakeLists.txt _deps/googletest-src/googlemock/CMakeLists.txt _deps/googletest-src/googlemock/cmake/gmock.pc.in _deps/googletest-src/googlemock/cmake/gmock_main.pc.in _deps/googletest-src/googletest/CMakeLists.txt _deps/googletest-src/googletest/cmake/Config.cmake.in _deps/googletest-src/googletest/cmake/gtest.pc.in _deps/googletest-src/googletest/cmake/gtest_main.pc.in _deps/googletest-src/googletest/cmake/internal_utils.cmake: phony
 
 
 #############################################

@@ -284,3 +284,156 @@ int main(void)
   return 0;
 }
 
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_STD_CXX11 succeeded with the following output:
+Change Dir: /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/Users/adamokruhlica/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/ninja/mac/ninja cmTC_0fa0f && [1/2] Building CXX object CMakeFiles/cmTC_0fa0f.dir/src.cxx.o
+[2/2] Linking CXX executable cmTC_0fa0f
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WALL succeeded with the following output:
+Change Dir: /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/Users/adamokruhlica/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/ninja/mac/ninja cmTC_0a375 && [1/2] Building CXX object CMakeFiles/cmTC_0a375.dir/src.cxx.o
+[2/2] Linking CXX executable cmTC_0a375
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WEXTRA succeeded with the following output:
+Change Dir: /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/Users/adamokruhlica/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/ninja/mac/ninja cmTC_1efbf && [1/2] Building CXX object CMakeFiles/cmTC_1efbf.dir/src.cxx.o
+[2/2] Linking CXX executable cmTC_1efbf
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WSHADOW succeeded with the following output:
+Change Dir: /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/Users/adamokruhlica/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/ninja/mac/ninja cmTC_4be1b && [1/2] Building CXX object CMakeFiles/cmTC_4be1b.dir/src.cxx.o
+[2/2] Linking CXX executable cmTC_4be1b
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WERROR succeeded with the following output:
+Change Dir: /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/Users/adamokruhlica/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/ninja/mac/ninja cmTC_8fc4d && [1/2] Building CXX object CMakeFiles/cmTC_8fc4d.dir/src.cxx.o
+[2/2] Linking CXX executable cmTC_8fc4d
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_PEDANTIC succeeded with the following output:
+Change Dir: /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/Users/adamokruhlica/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/ninja/mac/ninja cmTC_c1e79 && [1/2] Building CXX object CMakeFiles/cmTC_c1e79.dir/src.cxx.o
+[2/2] Linking CXX executable cmTC_c1e79
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_PEDANTIC_ERRORS succeeded with the following output:
+Change Dir: /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/Users/adamokruhlica/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/ninja/mac/ninja cmTC_86e68 && [1/2] Building CXX object CMakeFiles/cmTC_86e68.dir/src.cxx.o
+[2/2] Linking CXX executable cmTC_86e68
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WSHORTEN_64_TO_32 succeeded with the following output:
+Change Dir: /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/Users/adamokruhlica/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/ninja/mac/ninja cmTC_9ac55 && [1/2] Building CXX object CMakeFiles/cmTC_9ac55.dir/src.cxx.o
+[2/2] Linking CXX executable cmTC_9ac55
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_FSTRICT_ALIASING succeeded with the following output:
+Change Dir: /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/Users/adamokruhlica/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/ninja/mac/ninja cmTC_39fe2 && [1/2] Building CXX object CMakeFiles/cmTC_39fe2.dir/src.cxx.o
+[2/2] Linking CXX executable cmTC_39fe2
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WNO_DEPRECATED_DECLARATIONS succeeded with the following output:
+Change Dir: /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/Users/adamokruhlica/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/ninja/mac/ninja cmTC_bace6 && [1/2] Building CXX object CMakeFiles/cmTC_bace6.dir/src.cxx.o
+[2/2] Linking CXX executable cmTC_bace6
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WNO_DEPRECATED succeeded with the following output:
+Change Dir: /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/Users/adamokruhlica/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/ninja/mac/ninja cmTC_02d8b && [1/2] Building CXX object CMakeFiles/cmTC_02d8b.dir/src.cxx.o
+[2/2] Linking CXX executable cmTC_02d8b
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WSTRICT_ALIASING succeeded with the following output:
+Change Dir: /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/Users/adamokruhlica/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/ninja/mac/ninja cmTC_5688e && [1/2] Building CXX object CMakeFiles/cmTC_5688e.dir/src.cxx.o
+[2/2] Linking CXX executable cmTC_5688e
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WTHREAD_SAFETY succeeded with the following output:
+Change Dir: /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/Users/adamokruhlica/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/ninja/mac/ninja cmTC_c90c8 && [1/2] Building CXX object CMakeFiles/cmTC_c90c8.dir/src.cxx.o
+[2/2] Linking CXX executable cmTC_c90c8
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_COVERAGE succeeded with the following output:
+Change Dir: /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/Users/adamokruhlica/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/ninja/mac/ninja cmTC_9823d && [1/2] Building CXX object CMakeFiles/cmTC_9823d.dir/src.cxx.o
+[2/2] Linking CXX executable cmTC_9823d
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test BENCHMARK_HAS_O3_FLAG succeeded with the following output:
+Change Dir: /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/Users/adamokruhlica/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/ninja/mac/ninja cmTC_3e69e && [1/2] Building CXX object CMakeFiles/cmTC_3e69e.dir/src.cxx.o
+[2/2] Linking CXX executable cmTC_3e69e
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test BENCHMARK_HAS_CXX03_FLAG succeeded with the following output:
+Change Dir: /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/Users/adamokruhlica/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/ninja/mac/ninja cmTC_d2913 && [1/2] Building CXX object CMakeFiles/cmTC_d2913.dir/src.cxx.o
+[2/2] Linking CXX executable cmTC_d2913
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test BENCHMARK_HAS_WNO_ODR succeeded with the following output:
+Change Dir: /Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/Users/adamokruhlica/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.75/CLion.app/Contents/bin/ninja/mac/ninja cmTC_e8219 && [1/2] Building CXX object CMakeFiles/cmTC_e8219.dir/src.cxx.o
+[2/2] Linking CXX executable cmTC_e8219
+
+
+Source file was:
+int main() { return 0; }

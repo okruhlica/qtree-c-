@@ -191,7 +191,7 @@ bool QuadTree::contains(XY pointXY){
     return index_for_value(node, pointXY) >= 0;
 }
 
-bool QuadTree::remove(XY pointXY){
+void QuadTree::remove(XY pointXY){
     auto node = node_for_value(pointXY);
     auto index = index_for_value(node, pointXY) >= 0;
     for(int i =index+1; i<node->values + node->count;i++){

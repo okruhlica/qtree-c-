@@ -63,7 +63,7 @@ namespace AdamLib {
         void insert(float value_x, float value_y);
         void insert(XY pointXY);
         bool contains(XY pointXY);
-        bool remove(XY pointXY);
+        void remove(XY pointXY);
         std::vector<XY> *points_in_rect(AABBRect rect);
         void debug_inspect() const;
         ~QuadTree();

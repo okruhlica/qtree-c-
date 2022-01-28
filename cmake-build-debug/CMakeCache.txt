@@ -14,6 +14,63 @@
 # EXTERNAL cache entries
 ########################
 
+//Build a 32 bit version of the library.
+BENCHMARK_BUILD_32_BITS:BOOL=OFF
+
+//Flags used by the C++ compiler during coverage builds.
+BENCHMARK_CXX_FLAGS_COVERAGE:STRING=-g
+
+//Allow the downloading and in-tree building of unmet dependencies
+BENCHMARK_DOWNLOAD_DEPENDENCIES:BOOL=OFF
+
+//Enable building and running the assembly tests
+BENCHMARK_ENABLE_ASSEMBLY_TESTS:BOOL=OFF
+
+//Build documentation with Doxygen.
+BENCHMARK_ENABLE_DOXYGEN:BOOL=OFF
+
+//Enable the use of exceptions in the benchmark library.
+BENCHMARK_ENABLE_EXCEPTIONS:BOOL=ON
+
+//Enable building the unit tests which depend on gtest
+BENCHMARK_ENABLE_GTEST_TESTS:BOOL=ON
+
+//Enable installation of benchmark. (Projects embedding benchmark
+// may want to turn this OFF.)
+BENCHMARK_ENABLE_INSTALL:BOOL=ON
+
+//Enable performance counters provided by libpfm
+BENCHMARK_ENABLE_LIBPFM:BOOL=OFF
+
+//Enable link time optimisation of the benchmark library.
+BENCHMARK_ENABLE_LTO:BOOL=OFF
+
+//Enable testing of the benchmark library.
+BENCHMARK_ENABLE_TESTING:BOOL=ON
+
+//Build Release candidates with -Werror.
+BENCHMARK_ENABLE_WERROR:BOOL=ON
+
+//Flags used for linking binaries during coverage builds.
+BENCHMARK_EXE_LINKER_FLAGS_COVERAGE:STRING=
+
+//Build Release candidates with -Werror regardless of compiler
+// issues.
+BENCHMARK_FORCE_WERROR:BOOL=OFF
+
+//Enable installation of documentation.
+BENCHMARK_INSTALL_DOCS:BOOL=ON
+
+//Flags used by the shared libraries linker during coverage builds.
+BENCHMARK_SHARED_LINKER_FLAGS_COVERAGE:STRING=
+
+//Use bundled GoogleTest. If disabled, the find_package(GTest)
+// will be used.
+BENCHMARK_USE_BUNDLED_GTEST:BOOL=ON
+
+//Build and test using libc++ as the standard library.
+BENCHMARK_USE_LIBCXX:BOOL=OFF
+
 //Builds the googlemock subproject
 BUILD_GMOCK:BOOL=ON
 
@@ -300,14 +357,24 @@ FETCHCONTENT_FULLY_DISCONNECTED:BOOL=OFF
 FETCHCONTENT_QUIET:BOOL=ON
 
 //When not empty, overrides where to find pre-populated content
+// for googlebenchmark
+FETCHCONTENT_SOURCE_DIR_GOOGLEBENCHMARK:PATH=
+
+//When not empty, overrides where to find pre-populated content
 // for googletest
 FETCHCONTENT_SOURCE_DIR_GOOGLETEST:PATH=
 
 //Enables UPDATE_DISCONNECTED behavior for all content population
 FETCHCONTENT_UPDATES_DISCONNECTED:BOOL=OFF
 
+//Enables UPDATE_DISCONNECTED behavior just for population of googlebenchmark
+FETCHCONTENT_UPDATES_DISCONNECTED_GOOGLEBENCHMARK:BOOL=OFF
+
 //Enables UPDATE_DISCONNECTED behavior just for population of googletest
 FETCHCONTENT_UPDATES_DISCONNECTED_GOOGLETEST:BOOL=OFF
+
+//Git command line client
+GIT_EXECUTABLE:FILEPATH=/usr/bin/git
 
 //Enable installation of googletest. (Projects embedding googletest
 // may want to turn this OFF.)
@@ -351,6 +418,18 @@ QuadTree_SOURCE_DIR:STATIC=/Users/adamokruhlica/Documents/Code/C++/QuadTree
 
 //Name of the computer/site where compile is being run
 SITE:STRING=Adams-MacBook-Air.local
+
+//Value Computed by CMake
+benchmark_BINARY_DIR:STATIC=/Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/benchmark
+
+//Value Computed by CMake
+benchmark_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+benchmark_SOURCE_DIR:STATIC=/Users/adamokruhlica/Documents/Code/C++/QuadTree/benchmark
+
+//Dependencies for the target
+benchmark_main_LIB_DEPENDS:STATIC=general;benchmark::benchmark;
 
 //Value Computed by CMake
 gmock_BINARY_DIR:STATIC=/Users/adamokruhlica/Documents/Code/C++/QuadTree/cmake-build-debug/_deps/googletest-build/googlemock
@@ -412,6 +491,18 @@ gtest_main_LIB_DEPENDS:STATIC=general;gtest;
 # INTERNAL cache entries
 ########################
 
+//ADVANCED property for variable: BENCHMARK_CXX_FLAGS_COVERAGE
+BENCHMARK_CXX_FLAGS_COVERAGE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: BENCHMARK_EXE_LINKER_FLAGS_COVERAGE
+BENCHMARK_EXE_LINKER_FLAGS_COVERAGE-ADVANCED:INTERNAL=1
+//Test BENCHMARK_HAS_CXX03_FLAG
+BENCHMARK_HAS_CXX03_FLAG:INTERNAL=1
+//Test BENCHMARK_HAS_O3_FLAG
+BENCHMARK_HAS_O3_FLAG:INTERNAL=1
+//Test BENCHMARK_HAS_WNO_ODR
+BENCHMARK_HAS_WNO_ODR:INTERNAL=1
+//ADVANCED property for variable: BENCHMARK_SHARED_LINKER_FLAGS_COVERAGE
+BENCHMARK_SHARED_LINKER_FLAGS_COVERAGE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_ADDR2LINE
 CMAKE_ADDR2LINE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_AR
@@ -536,7 +627,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=4
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=7
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -579,6 +670,16 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Result of TRY_COMPILE
+COMPILE_HAVE_GNU_POSIX_REGEX:INTERNAL=FALSE
+//Result of TRY_COMPILE
+COMPILE_HAVE_POSIX_REGEX:INTERNAL=TRUE
+//Result of TRY_COMPILE
+COMPILE_HAVE_STD_REGEX:INTERNAL=TRUE
+//Result of TRY_COMPILE
+COMPILE_HAVE_STEADY_CLOCK:INTERNAL=TRUE
+//Result of TRY_COMPILE
+COMPILE_HAVE_THREAD_SAFETY_ATTRIBUTES:INTERNAL=FALSE
 //ADVANCED property for variable: COVERAGE_COMMAND
 COVERAGE_COMMAND-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: COVERAGE_EXTRA_FLAGS
@@ -589,16 +690,58 @@ CTEST_SUBMIT_RETRY_COUNT-ADVANCED:INTERNAL=1
 CTEST_SUBMIT_RETRY_DELAY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: DART_TESTING_TIMEOUT
 DART_TESTING_TIMEOUT-ADVANCED:INTERNAL=1
+//Details about finding Git
+FIND_PACKAGE_MESSAGE_DETAILS_Git:INTERNAL=[/usr/bin/git][v2.32.0 (Apple Git-132)()]
 //Details about finding Python
 FIND_PACKAGE_MESSAGE_DETAILS_Python:INTERNAL=[/Users/adamokruhlica/opt/anaconda3/bin/python3.9][cfound components: Interpreter ][v3.9.7()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
+//ADVANCED property for variable: GIT_EXECUTABLE
+GIT_EXECUTABLE-ADVANCED:INTERNAL=1
+//Test HAVE_CXX_FLAG_COVERAGE
+HAVE_CXX_FLAG_COVERAGE:INTERNAL=1
+//Test HAVE_CXX_FLAG_FSTRICT_ALIASING
+HAVE_CXX_FLAG_FSTRICT_ALIASING:INTERNAL=1
+//Test HAVE_CXX_FLAG_PEDANTIC
+HAVE_CXX_FLAG_PEDANTIC:INTERNAL=1
+//Test HAVE_CXX_FLAG_PEDANTIC_ERRORS
+HAVE_CXX_FLAG_PEDANTIC_ERRORS:INTERNAL=1
+//Test HAVE_CXX_FLAG_STD_CXX11
+HAVE_CXX_FLAG_STD_CXX11:INTERNAL=1
+//Test HAVE_CXX_FLAG_WALL
+HAVE_CXX_FLAG_WALL:INTERNAL=1
+//Test HAVE_CXX_FLAG_WD654
+HAVE_CXX_FLAG_WD654:INTERNAL=
+//Test HAVE_CXX_FLAG_WERROR
+HAVE_CXX_FLAG_WERROR:INTERNAL=1
+//Test HAVE_CXX_FLAG_WEXTRA
+HAVE_CXX_FLAG_WEXTRA:INTERNAL=1
+//Test HAVE_CXX_FLAG_WNO_DEPRECATED
+HAVE_CXX_FLAG_WNO_DEPRECATED:INTERNAL=1
+//Test HAVE_CXX_FLAG_WNO_DEPRECATED_DECLARATIONS
+HAVE_CXX_FLAG_WNO_DEPRECATED_DECLARATIONS:INTERNAL=1
+//Test HAVE_CXX_FLAG_WSHADOW
+HAVE_CXX_FLAG_WSHADOW:INTERNAL=1
+//Test HAVE_CXX_FLAG_WSHORTEN_64_TO_32
+HAVE_CXX_FLAG_WSHORTEN_64_TO_32:INTERNAL=1
+//Test HAVE_CXX_FLAG_WSTRICT_ALIASING
+HAVE_CXX_FLAG_WSTRICT_ALIASING:INTERNAL=1
+//Test HAVE_CXX_FLAG_WTHREAD_SAFETY
+HAVE_CXX_FLAG_WTHREAD_SAFETY:INTERNAL=1
+//Have library rt
+HAVE_LIB_RT:INTERNAL=
 //ADVANCED property for variable: MAKECOMMAND
 MAKECOMMAND-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: MEMORYCHECK_COMMAND
 MEMORYCHECK_COMMAND-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: MEMORYCHECK_SUPPRESSIONS_FILE
 MEMORYCHECK_SUPPRESSIONS_FILE-ADVANCED:INTERNAL=1
+//Result of TRY_RUN
+RUN_HAVE_POSIX_REGEX:INTERNAL=0
+//Result of TRY_RUN
+RUN_HAVE_STD_REGEX:INTERNAL=0
+//Result of TRY_RUN
+RUN_HAVE_STEADY_CLOCK:INTERNAL=0
 //ADVANCED property for variable: SITE
 SITE-ADVANCED:INTERNAL=1
 //CMAKE_INSTALL_PREFIX during last run
