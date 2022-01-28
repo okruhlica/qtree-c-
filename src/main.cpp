@@ -46,7 +46,7 @@ int main() {
     auto naive = new set<pair<float, float>>;
     {
         auto t0 = Timer("Naive populate");
-        int i = 1000;
+        int i = 100000;
         while(i--){
 //            if (i == 1){
 //                //cout << "$********************************************************\n";

@@ -91,7 +91,7 @@ void QuadTree::insert(XY pointXY) {
     //2b. We arrived at a full leaf; subdivide it until we have space to insert.
     do {
         _subdivide(node);
-        node = (*nodes)[node->child_nw + find_quadrant(pointXY, node->aabb)];
+        node = (*nodes)[node->child_nw + find_quadrant(pointXY.x, pointXY.y, node->aabb.x0,node->aabb.y0,node->aabb.x1,node->aabb.y1)];
     } while (node->is_full_leaf());
 
     add_value(node, pointXY);
@@ -119,10 +119,11 @@ void QuadTree::_subdivide(QuadNode* node) {
     if(points_index + 4*AdamLib::QuadTree::NODE_CAPACITY > points->size())
         points->resize(points_index + 4*AdamLib::QuadTree::NODE_CAPACITY + 1);
 
-    nodes->push_back(new QuadNode(nw_child, points_index));
-    nodes->push_back(new QuadNode(ne_child, points_index + NODE_CAPACITY));
-    nodes->push_back(new QuadNode(se_child, points_index + 2 * NODE_CAPACITY));
-    nodes->push_back(new QuadNode(sw_child, points_index + 3 * NODE_CAPACITY));
+    nodes->insert(nodes->end(),
+                  { new QuadNode(nw_child, points_index),
+                       new QuadNode(ne_child, points_index + NODE_CAPACITY),
+                       new QuadNode(se_child, points_index + 2 * NODE_CAPACITY),
+                       new QuadNode(sw_child, points_index + 3 * NODE_CAPACITY)});
 
     for (int i = node->values; i < node->values + node->count; ++i) {
         auto new_node = (*nodes)[node->child_nw + find_quadrant((*points)[i], aabb)];
@@ -188,7 +189,7 @@ vector<XY> *QuadTree::points_in_rect(AABBRect rect) const {
 inline QuadNode* QuadTree::node_for_value(XY val) const{
     auto node = (*nodes)[0];
     while (node->is_internal())
-        node = (*nodes)[node->child_nw + find_quadrant(val, node->aabb)];
+        node = (*nodes)[node->child_nw + find_quadrant(val.x, val.y, node->aabb.x0,node->aabb.y0,node->aabb.x1,node->aabb.y1)];
     return node;
 }
 
@@ -228,6 +229,7 @@ inline short QuadTree::find_quadrant(float x, float y, float x0, float y0, float
     return (y < my) ? 1 : 2;
 }
 
+// Convenience method, a tad slower than explicit version
 inline short QuadTree::find_quadrant(XY xy, AABBRect rect) {
     return find_quadrant(xy.x, xy.y, rect.x0, rect.y0, rect.x1, rect.y1);
 }
