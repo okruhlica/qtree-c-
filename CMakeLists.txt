@@ -34,6 +34,9 @@ target_link_libraries(QuadTest QTreeLib)
 
 ##################################
 # Specify tests
-add_test(NAME ZeroTest COMMAND QuadTest)
 add_test(NAME TrivialInsert COMMAND QuadTest)
-add_test(NAME TrivialInsertOutOfBounds COMMAND QuadTest)
+add_test(NAME InsertValueProper COMMAND QuadTest)
+add_test(NAME InsertValueOutOfBounds COMMAND QuadTest)
+add_test(NAME InsertValueDuplicate COMMAND QuadTest)
+add_test(NAME InsertSet01 COMMAND QuadTest)
+add_test(NAME ContainsTrivial COMMAND QuadTest)

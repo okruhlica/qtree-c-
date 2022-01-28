@@ -47,40 +47,47 @@ int main() {
             .y0 = 0,
             .y1 = 100
     };
-    AABBRect query = AABBRect({0,0,10,10});
-    QuadTree tree = QuadTree(aabb);
+    AABBRect query = AABBRect({0,0,50,50});
+    auto tree = QuadTree(aabb);
 
     auto naive = new set<pair<float, float>>;
     {
         auto t0 = Timer("Naive populate");
-        int i = 1000* 1000;
+        int i = 1000*1000;
         while(i--){
             float x = random_float(0, 100);
             float y = random_float(0, 100);
-             if(query.contains(x,y)){
-                 naive->insert({x,y});
-             }
+            //cout << "El: " << x << " " << y << endl;
+//             if(query.contains(x,y)){
+//                 naive->insert({x,y});
+//             }
+             tree.insert({x,y});
         }
     }
+    cout << endl << endl << endl;
+//    tree.debug_inspect();
 
-    {
-        auto t1 = Timer("Qtree populate");
-        int i = 1000* 1000;
-        while(i--){
-            float x = random_float(0, 100);
-            float y = random_float(0, 100);
-            tree.insert(XY(x,y));
-        }
-    }
     auto results = tree.points_in_rect(query);
     cout << "Results: Has the following " << results->size() << " elements:" << endl;
     for(auto res: *results){
-        // cout << res.x << " " << res.y << endl;
+//         cout << res.x << " " << res.y << endl;
     }
 
     cout << "Check: Should have the following " << naive->size() << " elements:" << endl;
     for(auto item: *naive){
-       // cout << item.first << " " << item.second << endl;
+  //      cout << item.first << " " << item.second << endl;
+    }
+
+    auto E = new set<pair<float,float>>;
+    for (int i=0;i<results->size();i++){
+        E->insert({(*results)[i].x,(*results)[i].y});
+    }
+
+//    cout << "Missing in solution:\n";
+    set<pair<float,float>> diff;
+    set_difference(naive->begin(), naive->end(), E->begin(), E->end(), inserter(diff,diff.end()));
+    for(auto item: diff){
+        cout << item.first << " " << item.second << endl;
     }
 
     delete naive;
