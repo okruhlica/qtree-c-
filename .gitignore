@@ -54,11 +54,13 @@ cmake-build-debug/*
 
 # File-based project format
 *.iws
+*.iws
 
 # IntelliJ
 out/
 
 # mpeltonen/sbt-idea plugin
+.idea
 .idea_modules/
 
 # JIRA plugin
@@ -118,3 +120,6 @@ fabric.properties
 
 .ninja_log
 .ninja_deps
+/benchmark/
+/cmake-build-debug/
+/cmake-build-debug-coverage/
