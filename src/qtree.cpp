@@ -71,10 +71,10 @@ inline bool QuadNode::is_internal() const {
 }
 
 
-QuadTree::QuadTree(AABBRect aabb, int initial_size) {
+QuadTree::QuadTree(AABBRect aabb) {
     bbox = aabb;
     nodes->push_back(new QuadNode(bbox, 0));
-    this->points = new vector<XY>(initial_size * 8 + 1);
+    this->points = new vector<XY>(256);
 }
 
 void QuadTree::insert(float value_x, float value_y) {
@@ -119,7 +119,7 @@ void QuadTree::_subdivide(QuadNode *node) {
     AABBRect se_child = AABBRect({mx, my, aabb.x1, aabb.y1});
     AABBRect sw_child = AABBRect({aabb.x0, my, mx, aabb.y1});
 
-    int32_t points_index = this->points->size();
+    int32_t points_index = points->size();
     if(points_index + 4*AdamLib::QuadTree::NODE_CAPACITY > points->capacity())
         points->resize(1.4*points->capacity());
 
@@ -137,6 +137,7 @@ void QuadTree::_subdivide(QuadNode *node) {
 std::ostream& operator<<(std::ostream &strm, const AABBRect &a) {
     return strm << "[" << a.x0 << " " << a.y0 << " " << a.x1 << " " << a.y1 << "]";
 }
+
 QuadNode *QuadTree::root() const {
     return (*nodes)[0];
 }

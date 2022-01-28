@@ -58,7 +58,7 @@ namespace AdamLib {
 
     class QuadTree {
     public:
-        explicit QuadTree(AABBRect aabb, int initial_size = 128);
+        explicit QuadTree(AABBRect aabb);
 
         void insert(float value_x, float value_y);
         void insert(XY pointXY);

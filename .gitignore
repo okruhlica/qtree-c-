@@ -47,6 +47,7 @@
 
 # CMake
 cmake-build-*/
+cmake-build-debug/*
 
 # Mongo Explorer plugin
 .idea/**/mongoSettings.xml
@@ -88,6 +89,8 @@ fabric.properties
 # modules.xml
 # .idea/misc.xml
 # *.ipr
+
+.idea
 
 # Sonarlint plugin
 # https://plugins.jetbrains.com/plugin/7973-sonarlint
