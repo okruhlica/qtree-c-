@@ -46,24 +46,17 @@ int main() {
     auto naive = new set<pair<float, float>>;
     {
         auto t0 = Timer("Naive populate");
-        int i = 100000;
+        int i = 1000*1000;
         while(i--){
-//            if (i == 1){
-//                //cout << "$********************************************************\n";
-//                //tree.debug_inspect();
-//            }
             float x = random_float(0, 100);
             float y = random_float(0, 100);
-            // cout << x << " " << y << endl;
+
              if(query.contains(x,y)){
                  naive->insert({x,y});
              }
              tree.insert({x,y});
         }
     }
-//    cout << "********************************************************\n";
-//    tree.debug_inspect();
-//    cout << endl << endl << endl;
 //    tree.debug_inspect();
 
     auto results = tree.points_in_rect(query);

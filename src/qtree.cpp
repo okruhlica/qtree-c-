@@ -102,8 +102,6 @@ void QuadTree::_subdivide(QuadNode* node) {
     auto aabb = node->aabb;
 
     // Construct the child nodes
-//    float mx = mid(aabb.x0, aabb.x1);
-//    float my = mid(aabb.y0, aabb.y1);
     float mx = (aabb.x0+ aabb.x1)/2;
     float my = (aabb.y0+aabb.y1)/2;
     AABBRect nw_child = AABBRect({aabb.x0, aabb.y0, mx, my});
@@ -211,9 +209,11 @@ void QuadTree::remove(XY pointXY){
 }
 
 QuadTree::~QuadTree() {
-    delete nodes;
     delete points;
-    //TODO: dealloc nodes
+    for(int i = 0; i<nodes->size();i++){
+        delete (*nodes)[i];
+    }
+    delete nodes;
 }
 
 inline short QuadTree::find_quadrant(float x, float y, float x0, float y0, float x1, float y1) {
