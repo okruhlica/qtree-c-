@@ -11,7 +11,8 @@ TEST(Trivial, TrivialInsert){
 
 TEST(Insert, InsertValueOutOfBounds){
     AdamLib::QuadTree tree = AdamLib::QuadTree({0,0,100,100});
-    EXPECT_ANY_THROW(tree.insert({-0.5,-0.5}));
+    tree.insert({-1,-1});
+    EXPECT_EQ(tree.points_in_rect({-1000,-1000,1000,1000})->size(), 0);
 }
 
 TEST(Insert, InsertValueProper){

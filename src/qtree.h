@@ -66,23 +66,24 @@ namespace AdamLib {
         void remove(XY pointXY);
         std::vector<XY> *points_in_rect(AABBRect rect) const;
         std::vector<XY> *points_in_circle(XY center, float radius) const;
-        void debug_inspect() const;
+        void debug_inspect(int node=0,int depth=0) const;
         ~QuadTree();
 
     private:
         const int NODE_CAPACITY = 8;
-        AABBRect bbox;
+        int32_t last_point_id = 8;
         std::vector<QuadNode*> * nodes = new std::vector<QuadNode*>();
         std::vector<XY>* points;
 
         QuadNode* root() const;
         void _subdivide(QuadNode* node);
 
-        inline short find_quadrant(float x, float y, float x0, float y0, float x1, float y1);
-        inline short find_quadrant(XY xy, AABBRect rect);
+        static inline short find_quadrant(float x, float y, float x0, float y0, float x1, float y1);
+        static inline short find_quadrant(XY xy, AABBRect rect);
         inline void add_value(QuadNode* node, XY val);
-        inline QuadNode* node_for_value(XY val);
-        inline int32_t index_for_value(QuadNode* node, XY val);
+        inline QuadNode* node_for_value(XY val) const;
+        inline int32_t index_for_value(const QuadNode* node, XY val) const;
+
     };
 }
 #endif //QUADTREE_QTREE_H
