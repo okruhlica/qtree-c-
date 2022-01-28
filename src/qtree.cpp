@@ -10,10 +10,6 @@ using namespace AdamLib;
 using namespace std;
 
 
-inline float mid(float a, float b) {
-    return a + (b - a) / 2;
-}
-
 XY::XY(): x(0), y(0){}
 
 XY::XY(float x, float y) {
@@ -106,9 +102,10 @@ void QuadTree::_subdivide(QuadNode* node) {
     auto aabb = node->aabb;
 
     // Construct the child nodes
-    float mx = mid(aabb.x0, aabb.x1);
-    float my = mid(aabb.y0, aabb.y1);
-
+//    float mx = mid(aabb.x0, aabb.x1);
+//    float my = mid(aabb.y0, aabb.y1);
+    float mx = (aabb.x0+ aabb.x1)/2;
+    float my = (aabb.y0+aabb.y1)/2;
     AABBRect nw_child = AABBRect({aabb.x0, aabb.y0, mx, my});
     AABBRect ne_child = AABBRect({mx, aabb.y0, aabb.x1, my});
     AABBRect se_child = AABBRect({mx, my, aabb.x1, aabb.y1});
@@ -220,8 +217,11 @@ QuadTree::~QuadTree() {
 }
 
 inline short QuadTree::find_quadrant(float x, float y, float x0, float y0, float x1, float y1) {
-    float mx = mid(x0, x1);
-    float my = mid(y0, y1);
+//    float mx = mid(x0, x1);
+//    float my = mid(y0, y1);
+
+    float mx = (x0+x1)/2;
+    float my = (y0+y1)/2;
 
     if (x < mx) {
         return (y < my) ? 0 : 3;
