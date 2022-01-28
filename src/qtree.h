@@ -10,6 +10,9 @@ namespace AdamLib {
         float x, y;
         XY(float x, float y);
         XY();
+        inline bool operator==(const XY& rhs){
+            return rhs.x == x && rhs.y == y;
+        }
     };
 
     struct AABBRect {
@@ -55,7 +58,7 @@ namespace AdamLib {
 
     class QuadTree {
     public:
-        explicit QuadTree(AABBRect aabb);
+        explicit QuadTree(AABBRect aabb, int initial_size = 128);
 
         void insert(float value_x, float value_y);
         void insert(XY pointXY);
@@ -69,7 +72,7 @@ namespace AdamLib {
         const int NODE_CAPACITY = 8;
         AABBRect bbox;
         std::vector<QuadNode*> * nodes = new std::vector<QuadNode*>();
-        std::vector<XY>* points = new std::vector<XY>();
+        std::vector<XY>* points;
 
         QuadNode* root() const;
         void _subdivide(QuadNode* node);

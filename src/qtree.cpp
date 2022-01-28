@@ -42,7 +42,6 @@ AABBRect AABBRect::intersection(AABBRect rect) const {
 
 bool AABBRect::is_empty() const {
     return (this->x0 > this->x1) || (this->y0 > this->y1);
-
 }
 
 bool AABBRect::covers(AABBRect *other) const {
@@ -72,9 +71,10 @@ inline bool QuadNode::is_internal() const {
 }
 
 
-QuadTree::QuadTree(AABBRect aabb) {
+QuadTree::QuadTree(AABBRect aabb, int initial_size) {
     bbox = aabb;
     nodes->push_back(new QuadNode(bbox, 0));
+    this->points = new vector<XY>(initial_size * 8 + 1);
 }
 
 void QuadTree::insert(float value_x, float value_y) {
@@ -85,9 +85,7 @@ void QuadTree::insert(XY pointXY) {
     if (!bbox.contains(pointXY)) throw invalid_argument("Point is out of bounds!");
 
     //1. Traverse down the tree and find a leaf to insert to
-    QuadNode *node = (*nodes)[0];
-    while (node->is_internal())
-        node = (*nodes)[node->child_nw + find_quadrant(pointXY, node->aabb)];
+    auto node = node_for_value(pointXY);
 
     //2a. We arrived at leaf with remaining capacity; insert the point here.
     if (!node->is_full_leaf()) {
@@ -109,7 +107,6 @@ inline void QuadTree::add_value(QuadNode* node, XY val){
 }
 
 void QuadTree::_subdivide(QuadNode *node) {
-    //std::cout << "Subdividing";
     node->child_nw = nodes->size();
     auto aabb = node->aabb;
 
@@ -123,16 +120,20 @@ void QuadTree::_subdivide(QuadNode *node) {
     AABBRect sw_child = AABBRect({aabb.x0, my, mx, aabb.y1});
 
     int32_t points_index = this->points->size();
+    if(points_index + 4*AdamLib::QuadTree::NODE_CAPACITY > points->capacity())
+        points->resize(1.4*points->capacity());
+
     nodes->push_back(new QuadNode(nw_child, points_index));
     nodes->push_back(new QuadNode(ne_child, points_index + NODE_CAPACITY));
     nodes->push_back(new QuadNode(se_child, points_index + 2 * NODE_CAPACITY));
     nodes->push_back(new QuadNode(sw_child, points_index + 3 * NODE_CAPACITY));
-    
+
     for (int i = node->values; i < node->values + node->count; ++i) {
         auto new_node = (*nodes)[node->child_nw + find_quadrant((*points)[i], aabb)];
         add_value(new_node, (*points)[i]);
     }
 }
+
 std::ostream& operator<<(std::ostream &strm, const AABBRect &a) {
     return strm << "[" << a.x0 << " " << a.y0 << " " << a.x1 << " " << a.y1 << "]";
 }
@@ -180,11 +181,8 @@ inline QuadNode* QuadTree::node_for_value(XY val){
 }
 
 inline int32_t QuadTree::index_for_value(QuadNode* node, XY val){
-    for(int i = node->values; i < node->values + node->count;i++) {
-        if ((*points)[i].x == val.x && (*points)[i].y == val.y) {
-            return i;
-        }
-    }
+    for(int i = node->values; i < node->values + node->count;i++)
+        if ((*points)[i] == val) return i;
     return -1;
 }
 
