@@ -142,7 +142,22 @@ QuadNode *QuadTree::root() const {
     return (*nodes)[0];
 }
 
-vector<XY> *QuadTree::points_in_rect(AABBRect rect) {
+// Todo Test
+std::vector<XY> *QuadTree::points_in_circle(XY center, float radius) const{
+    auto rect = AABBRect{center.x - radius, center.y - radius, center.x + radius, center.y + radius};
+    auto points_rect = points_in_rect(rect);
+    auto points_found = new vector<XY>();
+    for (auto point: *points_rect){
+        float dx = (point.x - center.x) * (point.x - center.x);
+        float dy = (point.y - center.y) * (point.y - center.y);
+        if(dx+dy < radius*radius){
+            points_found->push_back(point);
+        }
+    }
+    return points_found;
+}
+
+vector<XY> *QuadTree::points_in_rect(AABBRect rect) const {
     auto points_found = new vector<XY>{};
 
     // Trivial case; the search area does not cross our bounding box. Returns empty result set.

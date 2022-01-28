@@ -23,9 +23,23 @@ static void BM_InitQuadTreeNoInit(benchmark::State& state){
     }
 }
 
+static void BM_QueryCircle(benchmark::State& state){
+        //state.PauseTiming();
+        auto tree = AdamLib::QuadTree({0, 0, 100, 100});
+        for (int i = 1; i <= 1000 * 1000; ++i) {
+            tree.insert({random_float(0,100), random_float(0,100)});
+        }
+    for (auto _ : state) {
+        //state.ResumeTiming();
+        tree.points_in_circle({20,20},10.5);
+    }
+}
+
 // Register the function as a benchmark
 BENCHMARK(BM_InitQuadTreeNoInit)->Unit(benchmark::kMillisecond);
 
 BENCHMARK(BM_FillQuadTree1MNoInit)->Unit(benchmark::kMillisecond);
+BENCHMARK(BM_QueryCircle)->Unit(benchmark::kMillisecond);
+
 
 BENCHMARK_MAIN();
